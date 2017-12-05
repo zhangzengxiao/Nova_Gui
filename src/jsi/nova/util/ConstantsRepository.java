@@ -3,7 +3,10 @@
  */
 package jsi.nova.util;
 
+import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
+
+import jsi.nova.gui.frame.MainFrame;
 
 /**
  * @ClassName:     ConstantsRepository.java
@@ -15,5 +18,7 @@ import com.mxgraph.view.mxGraph;
  */
 public class ConstantsRepository {
     public static mxGraph graph = new mxGraph();
+    public static mxGraphComponent graphComponent = new mxGraphComponent(graph);
+    public static MainFrame mainFrame =null;
 
 }

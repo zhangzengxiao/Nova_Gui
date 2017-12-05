@@ -3,7 +3,6 @@
  */
 package jsi.nova.gui.panel;
 
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 /**

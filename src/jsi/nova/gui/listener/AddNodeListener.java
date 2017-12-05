@@ -56,6 +56,7 @@ public class AddNodeListener implements ActionListener{
 
         mxCell port1 = new mxCell(null, geo1,
                         "shape=ellipse;perimter=ellipsePerimeter");
+        port1.setValue(cell.getValue());
         port1.setVertex(true);
 
         mxGeometry geo2 = new mxGeometry(1.0, 0.5, PORT_DIAMETER,
@@ -65,6 +66,7 @@ public class AddNodeListener implements ActionListener{
 
         mxCell port2 = new mxCell(null, geo2,
                         "shape=ellipse;perimter=ellipsePerimeter");
+        port2.setValue(cell.getValue());
         port2.setVertex(true);
 
         graph.addCell(port1, cell);

@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import jsi.nova.gui.listener.AddNodeListener;
+import jsi.nova.gui.listener.OpenGraphListener;
+import jsi.nova.gui.listener.SaveGraphListener;
+import jsi.nova.gui.listener.TestPrintListener;
 import jsi.nova.util.GuiUtil;
 
 /**
@@ -24,6 +27,7 @@ public class NovaToolBar extends JToolBar {
     private JButton openGraph = null;
     private JButton addNode = null;
     private JButton addEdge = null;
+    private JButton testButton = null;
 
     public NovaToolBar() {
         // TODO Auto-generated constructor stub
@@ -37,14 +41,20 @@ public class NovaToolBar extends JToolBar {
         GuiUtil.setImageIcon(addNode, "frame_64.png", "添加节点");
         addEdge = new JButton();
         GuiUtil.setImageIcon(addEdge, "arrow_64.png", "添加连线");
+        
+        testButton = new JButton("测试");
         //
         addNode.addActionListener(new AddNodeListener());
+        saveGraph.addActionListener(new SaveGraphListener());
+        openGraph.addActionListener(new OpenGraphListener());
+        testButton.addActionListener(new TestPrintListener());
         //
         this.add(runWorkflow);
         this.add(saveGraph);
         this.add(openGraph);
         this.add(addNode);
         this.add(addEdge);
+        this.add(testButton);
         this.setFloatable(false);
     }
 
