@@ -6,6 +6,7 @@ package jsi.nova.gui.component;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+import jsi.nova.gui.listener.AddNodeListener;
 import jsi.nova.util.GuiUtil;
 
 /**
@@ -36,7 +37,9 @@ public class NovaToolBar extends JToolBar {
         GuiUtil.setImageIcon(addNode, "frame_64.png", "添加节点");
         addEdge = new JButton();
         GuiUtil.setImageIcon(addEdge, "arrow_64.png", "添加连线");
-
+        //
+        addNode.addActionListener(new AddNodeListener());
+        //
         this.add(runWorkflow);
         this.add(saveGraph);
         this.add(openGraph);

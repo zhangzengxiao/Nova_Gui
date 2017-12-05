@@ -6,9 +6,11 @@ package jsi.nova.gui.panel;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
 
 import jsi.nova.util.ConstantsRepository;
 
@@ -21,10 +23,11 @@ import jsi.nova.util.ConstantsRepository;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphPanel extends JPanel{
-    
+    private mxGraph graph = null;
     public GraphPanel() {
         // TODO Auto-generated constructor stub
+        graph = ConstantsRepository.graph;
         this.setLayout(new GridLayout(1, 1));
-        this.add(new mxGraphComponent(ConstantsRepository.graph));
+        this.add(new mxGraphComponent(graph));
     }
 }
