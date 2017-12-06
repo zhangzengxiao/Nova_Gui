@@ -5,6 +5,7 @@ package jsi.nova.gui.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.mxgraph.model.mxCell;
@@ -15,6 +16,7 @@ import com.mxgraph.util.mxRectangle;
 import com.mxgraph.view.mxEdgeStyle;
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.ConstantsRepository;
 
 /**
@@ -40,8 +42,18 @@ public class AddNodeListener implements ActionListener{
         Map<String, Object> style = graph.getStylesheet().getDefaultEdgeStyle();
         style.put(mxConstants.STYLE_EDGE, mxEdgeStyle.ElbowConnector);
         //
-        mxCell cell = (mxCell) graph.insertVertex(graph.getDefaultParent(), null, "Hello", 20,
-                20, 100, 100, "");
+        mxGeometry cellgeometry = new mxGeometry(20,20,100,100);
+        cellgeometry.setRelative(false);
+        CommandsCell cell = new CommandsCell("Hello",cellgeometry,"");
+        cell.setId("");
+        cell.setVertex(true);
+        cell.setConnectable(true);
+//        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+//        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+//        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+//        mxCell cell = (mxCell) graph.insertVertex(graph.getDefaultParent(), null, "Hello", 20,
+//                20, 100, 100, "");
+        graph.addCell(cell, graph.getDefaultParent());
         cell.setConnectable(false);
         mxGeometry geo = graph.getModel().getGeometry(cell);
         // The size of the rectangle when the minus sign is clicked
