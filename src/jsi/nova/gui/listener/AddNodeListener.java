@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
+import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
 import com.mxgraph.util.mxPoint;
 import com.mxgraph.util.mxRectangle;
@@ -31,25 +32,30 @@ public class AddNodeListener implements ActionListener{
     private mxGraph graph = null;
     final int PORT_DIAMETER = 20;
     final int PORT_RADIUS = PORT_DIAMETER / 2;
+    private int cellsCount = 1;
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         addNode();
     }
-    public void addNode(){
+    public void addNode(){      
         graph = ConstantsRepository.graph;
+        mxGraphComponent mg = new ConstantsRepository().graphComponent;
+        String value = "phase"+cellsCount++;
         // Sets the default edge style
-        Map<String, Object> style = graph.getStylesheet().getDefaultEdgeStyle();
-        style.put(mxConstants.STYLE_EDGE, mxEdgeStyle.ElbowConnector);
+//        Map<String, Object> style = graph.getStylesheet().getDefaultEdgeStyle();
+//        style.put(mxConstants.STYLE_EDGE, mxEdgeStyle.ElbowConnector);
         //
         mxGeometry cellgeometry = new mxGeometry(20,20,100,60);
         cellgeometry.setRelative(false);
-        CommandsCell cell = new CommandsCell("Hello", cellgeometry, "");
+        CommandsCell cell = new CommandsCell(value, cellgeometry, "");
         //mxCell cell = new mxCell("Hello", cellgeometry, "");
         cell.setId(null);
         cell.setVertex(true);
         cell.setConnectable(true);
         graph.addCell(cell, graph.getDefaultParent());
+        
+        
 //        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 //        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 //        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);

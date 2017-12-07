@@ -34,8 +34,14 @@ public class TestPrintListener implements ActionListener{
         mxGraph graph = ConstantsRepository.graph;
         mxGraphComponent mg = ConstantsRepository.graphComponent;
         for(Object cell : mg.getCells(mg.getBounds())){
-            mxCell c = (mxCell) cell;
-           System.out.println(c.getChildCount());
+            if(cell instanceof CommandsCell){
+                //System.out.println(cell);
+            }
+            else{
+                mxCell c = (mxCell) cell;
+                System.out.println(c.getSource());
+                System.out.println(c.getTarget());
+            }
         }
         
     }
