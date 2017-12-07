@@ -10,6 +10,8 @@ import jsi.nova.gui.listener.AddNodeListener;
 import jsi.nova.gui.listener.OpenGraphListener;
 import jsi.nova.gui.listener.SaveGraphListener;
 import jsi.nova.gui.listener.TestPrintListener;
+import jsi.nova.gui.listener.ZoomInListener;
+import jsi.nova.gui.listener.ZoomOutListener;
 import jsi.nova.util.GuiUtil;
 
 /**
@@ -28,6 +30,8 @@ public class NovaToolBar extends JToolBar {
     private JButton addNode = null;
     private JButton addEdge = null;
     private JButton testButton = null;
+    private JButton zoomin = null;
+    private JButton zoomout = null;
 
     public NovaToolBar() {
         // TODO Auto-generated constructor stub
@@ -41,12 +45,18 @@ public class NovaToolBar extends JToolBar {
         GuiUtil.setImageIcon(addNode, "frame_64.png", "添加节点");
         addEdge = new JButton();
         GuiUtil.setImageIcon(addEdge, "arrow_64.png", "添加连线");
+        zoomin = new JButton();
+        GuiUtil.setImageIcon(zoomin, "zoomin.gif", "放大");
+        zoomout = new JButton();
+        GuiUtil.setImageIcon(zoomout, "zoomout.gif", "缩小");
         
         testButton = new JButton("测试");
         //
         addNode.addActionListener(new AddNodeListener());
         saveGraph.addActionListener(new SaveGraphListener());
         openGraph.addActionListener(new OpenGraphListener());
+        zoomin.addActionListener(new ZoomInListener());
+        zoomout.addActionListener(new ZoomOutListener());
         testButton.addActionListener(new TestPrintListener());
         //
         this.add(runWorkflow);
@@ -54,6 +64,8 @@ public class NovaToolBar extends JToolBar {
         this.add(openGraph);
         this.add(addNode);
         this.add(addEdge);
+        this.add(zoomin);
+        this.add(zoomout);
         this.add(testButton);
         this.setFloatable(false);
     }
