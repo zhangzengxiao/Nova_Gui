@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import com.mxgraph.model.mxCell;
 
 import jsi.nova.jgraphx.CommandsCell;
+import jsi.nova.util.ConstantsRepository;
 
 /**
  * @ClassName:     EditVertexDialog.java
@@ -52,9 +53,9 @@ public class EditCommandsCellDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 cell.setValue(text_name.getText().toString());
-               
                 //
                 cell.setCommands(text_commands.getText().toString());
+                ConstantsRepository.graph.refresh();
                 dispose();
             }
         });

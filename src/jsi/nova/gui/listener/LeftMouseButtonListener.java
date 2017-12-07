@@ -57,6 +57,10 @@ public class LeftMouseButtonListener implements MouseListener {
                     cmenu = new CellPopMenu((CommandsCell) cell);
                     cmenu.show(ConstantsRepository.graphComponent, e.getX(), e.getY());
                 }
+                if(cell.isEdge()){
+                    cmenu = new CellPopMenu(cell);
+                    cmenu.show(ConstantsRepository.graphComponent, e.getX(), e.getY());
+                }
             }
         }
     }

@@ -9,8 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import com.mxgraph.model.mxCell;
+
 import jsi.nova.gui.dialog.EditCommandsCellDialog;
 import jsi.nova.jgraphx.CommandsCell;
+import jsi.nova.util.ConstantsRepository;
 
 /**
  * @ClassName:     CellPopMenu.java
@@ -23,8 +26,7 @@ import jsi.nova.jgraphx.CommandsCell;
 public class CellPopMenu extends JPopupMenu {
     JMenuItem edit;
     JMenuItem delete;
-
-    public CellPopMenu(CommandsCell cell) {
+    public CellPopMenu(mxCell cell) {
         // TODO Auto-generated constructor stub
         edit = new JMenuItem("±à¼­");
         delete = new JMenuItem("É¾³ý");
@@ -34,7 +36,7 @@ public class CellPopMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 if (cell instanceof CommandsCell) {
-                    new EditCommandsCellDialog(cell);
+                    new EditCommandsCellDialog((CommandsCell) cell);
                 }
                 else if(cell.isEdge()){
                    
@@ -45,7 +47,9 @@ public class CellPopMenu extends JPopupMenu {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
+                // TODO Auto-generated method cstub
+                Object[] cells = {cell};
+                ConstantsRepository.graph.removeCells(cells);
             }
         });
         this.add(edit);
