@@ -46,7 +46,7 @@ public class AddNodeListener implements ActionListener{
 //        Map<String, Object> style = graph.getStylesheet().getDefaultEdgeStyle();
 //        style.put(mxConstants.STYLE_EDGE, mxEdgeStyle.ElbowConnector);
         //
-        mxGeometry cellgeometry = new mxGeometry(20,20,100,60);
+        mxGeometry cellgeometry = new mxGeometry(0,0,80,50);
         cellgeometry.setRelative(false);
         CommandsCell cell = new CommandsCell(value, cellgeometry, "");
         //mxCell cell = new mxCell("Hello", cellgeometry, "");
