@@ -42,7 +42,7 @@ import jsi.nova.util.ConstantsRepository;
 /**
  * @ClassName:     SaveGraphListener.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         zhangzengxiao
+ * @author         save the graph as a XML File
  * @version        V1.0  
  * @Date           2017年12月5日 上午10:09:36 
  * @Place          北京航空航天大学中德软件联合研究所

@@ -13,7 +13,7 @@ import jsi.nova.gui.panel.MainSplitPanel;
 
 /**
  * @ClassName:     MainFrame.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   MainFrame
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月4日 下午2:50:13 

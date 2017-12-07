@@ -7,7 +7,7 @@ import javax.swing.JSplitPane;
 
 /**
  * @ClassName:     MainSplitPanel.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   this panel contain all of other panel
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月4日 下午3:05:08 

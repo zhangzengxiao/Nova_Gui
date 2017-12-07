@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 /**
  * @ClassName:     ProjectTreePanel.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         zhangzengxiao
+ * @author         show the structures of project
  * @version        V1.0  
  * @Date           2017年12月4日 下午2:53:58 
  * @Place          北京航空航天大学中德软件联合研究所

@@ -35,7 +35,7 @@ import jsi.nova.util.ConstantsRepository;
 
 /**
  * @ClassName:     OpenGraphListener.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   open a Graph from a XML File
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月5日 下午12:29:52 

@@ -8,7 +8,7 @@ import javax.swing.JSplitPane;
 /**
  * @ClassName:     GraphAndMonitorSplitPanel.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         zhangzengxiao
+ * @author         contain graph panel and monitor panel
  * @version        V1.0  
  * @Date           2017年12月4日 下午3:07:50 
  * @Place          北京航空航天大学中德软件联合研究所

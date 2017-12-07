@@ -16,7 +16,7 @@ import jsi.nova.util.ConstantsRepository;
 
 /**
  * @ClassName:     LeftMouseButtonListener.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   LeftMouseButtonListener
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月5日 下午3:57:59 

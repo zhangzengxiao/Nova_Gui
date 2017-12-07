@@ -8,7 +8,7 @@ import com.mxgraph.model.mxGeometry;
 
 /**
  * @ClassName:     ComandsCell.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   CommandsCell Extends from mxCell
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月6日 下午12:51:56 

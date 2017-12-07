@@ -19,7 +19,7 @@ import jsi.nova.util.ConstantsRepository;
 
 /**
  * @ClassName:     EditVertexDialog.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   Edit CommandsCEll dailog
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月5日 下午4:31:11 

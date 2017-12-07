@@ -10,7 +10,7 @@ import jsi.nova.gui.frame.MainFrame;
 
 /**
  * @ClassName:     ConstantsRepository.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   ConstantsRepository，保存全局变量
  * @author         ConstantsRepository
  * @version        V1.0  
  * @Date           2017年12月4日 下午3:53:35 

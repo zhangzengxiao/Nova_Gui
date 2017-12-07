@@ -8,7 +8,7 @@ import javax.swing.JMenuBar;
 
 /**
  * @ClassName:     TopMenuBar.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   the Main Menu
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月4日 下午3:34:32 
