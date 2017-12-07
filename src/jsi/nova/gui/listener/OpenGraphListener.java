@@ -12,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JFileChooser;
@@ -19,12 +21,16 @@ import javax.swing.JFileChooser;
 import org.w3c.dom.Document;
 
 import com.mxgraph.io.mxCodec;
+import com.mxgraph.model.mxCell;
+import com.mxgraph.model.mxGeometry;
 import com.mxgraph.model.mxIGraphModel;
 import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.util.mxPoint;
 import com.mxgraph.util.mxXmlUtils;
 import com.mxgraph.util.png.mxPngTextDecoder;
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.ConstantsRepository;
 
 /**
@@ -41,16 +47,7 @@ public class OpenGraphListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        try {
-            openGraph();
-        } catch (FileNotFoundException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (UnsupportedEncodingException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        open2();
     }
 
     public void openGraph() throws FileNotFoundException, UnsupportedEncodingException {
@@ -66,25 +63,56 @@ public class OpenGraphListener implements ActionListener {
                 Document document = mxXmlUtils.parseXml(URLDecoder.decode(value, "UTF-8"));
                 mxCodec codec = new mxCodec(document);
                 codec.decode(document.getDocumentElement(), graphComponent.getGraph().getModel());
-
                 return;
             }
         }
-        //        XMLDecoder xmlDecoder = null;
-        //        JFileChooser jFileChooser = new JFileChooser();
-        //        jFileChooser.showOpenDialog(ConstantsRepository.mainFrame);
-        //        File openfile = jFileChooser.getSelectedFile();
-        //        if (openfile == null) return;
-        //        try {
-        //            xmlDecoder = new XMLDecoder(new  BufferedInputStream(new  FileInputStream(openfile)));
-        //        } catch (FileNotFoundException e1) {
-        //            // TODO Auto-generated catch block
-        //            e1.printStackTrace();
-        //        }
-        //        graph.removeCells();
-        //        Object cells =  xmlDecoder.readObject();
-        //        graph.setModel((mxIGraphModel) cells);
-        //        xmlDecoder.close();
+    }
+
+    public void open2() {
+        XMLDecoder xmlDecoder = null;
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.showOpenDialog(ConstantsRepository.mainFrame);
+        File openfile = jFileChooser.getSelectedFile();
+        if (openfile == null)
+            return;
+        try {
+            xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(openfile)));
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        //graph.removeCells();
+        List open = new ArrayList();
+        open = (List) xmlDecoder.readObject();
+        graph.getModel().beginUpdate();
+
+        for (Object cell : open) {
+            CommandsCell s = null;
+            final int PORT_DIAMETER = 20;
+            final int PORT_RADIUS = PORT_DIAMETER / 2;
+            mxCell c = (mxCell) cell;
+            if (c instanceof CommandsCell) {
+                graph.addCell(c, graph.getDefaultParent());
+//                mxGeometry geo1 = new mxGeometry(0, 0.5, PORT_DIAMETER, PORT_DIAMETER);
+//                // Because the origin is at upper left corner, need to translate to
+//                // position the center of port correctly
+//                geo1.setOffset(new mxPoint(-PORT_RADIUS, -PORT_RADIUS));
+//                geo1.setRelative(true);
+//
+//                mxCell port1 = new mxCell(null, geo1, "shape=ellipse;perimter=ellipsePerimeter");
+//                port1.setValue("ttttt"); 
+//                port1.setVertex(true);
+//                graph.addCell(port1, c);
+            } else if (c.isEdge()) {
+                graph.addCell(c);
+            } else {
+                mxCell parent = (mxCell) c.getParent();
+                mxCell child = c;
+                System.out.println(graph.addCell(child, parent));
+            }
+        }
+        graph.getModel().endUpdate();
+        xmlDecoder.close();
     }
 
 }

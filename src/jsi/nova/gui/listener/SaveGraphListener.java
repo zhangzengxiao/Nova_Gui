@@ -8,12 +8,17 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.beans.XMLEncoder;
 import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
@@ -21,6 +26,7 @@ import javax.swing.JOptionPane;
 
 import com.mxgraph.io.mxCodec;
 import com.mxgraph.layout.mxGraphLayout;
+import com.mxgraph.model.mxCell;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.swing.mxGraphComponent.mxGraphControl;
 import com.mxgraph.swing.handler.mxGraphHandler;
@@ -48,13 +54,7 @@ public class SaveGraphListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        try {
-            saveGraph();
-        } catch (IOException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        save2();
     }
 
     public void saveGraph() throws IOException {
@@ -64,6 +64,12 @@ public class SaveGraphListener implements ActionListener {
         // Creates the URL-encoded XML data
         mxCodec codec = new mxCodec();
         String xml = URLEncoder.encode(mxXmlUtils.getXml(codec.encode(graph.getModel())), "UTF-8");
+        File tf = new File("ttt");
+        FileWriter fw = new FileWriter(tf);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(mxXmlUtils.getXml(codec.encode(graph.getModel())));
+        bw.close();
+        fw.close();
         mxPngEncodeParam param = mxPngEncodeParam.getDefaultEncodeParam(image);
         param.setCompressedText(new String[] { "mxGraphModel", xml });
         //
@@ -82,22 +88,36 @@ public class SaveGraphListener implements ActionListener {
         } finally {
             outputStream.close();
         }
-        //        XMLEncoder xmlEncoder =null;
-        //        JFileChooser jFileChooser = new JFileChooser();
-        //        jFileChooser.showSaveDialog(ConstantsRepository.mainFrame);
-        //        File savefile = jFileChooser.getSelectedFile();
-        //        if (savefile == null) return;
-        //        try {
-        //            xmlEncoder = new XMLEncoder(new  BufferedOutputStream(  
-        //                    new  FileOutputStream(savefile)));
-        //        } catch (FileNotFoundException e1) {
-        //            // TODO Auto-generated catch block
-        //            e1.printStackTrace();
-        //        }
-        //        AbstractAction
-        //        Object cells = graph.getModel();
-        //        xmlEncoder.writeObject(cells);
-        //        xmlEncoder.close();
+
+    }
+    public void save2(){
+        XMLEncoder xmlEncoder = null;
+        JFileChooser jFileChooser = new JFileChooser();
+        jFileChooser.showSaveDialog(ConstantsRepository.mainFrame);
+        File savefile = jFileChooser.getSelectedFile();
+        if (savefile == null)
+            return;
+        try {
+            xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(savefile)));
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
+        List save = new ArrayList<>();
+        for (Object cell : cells) {
+            save.add(cell);
+        }
+        for (Object cell : cells) {
+            mxCell c = (mxCell) cell;
+            if (c.getChildCount() > 0) {
+                for (int i = 0; i < c.getChildCount(); i++) {
+                    save.add(c.getChildAt(i));
+                }
+            }
+        }
+        xmlEncoder.writeObject(save);
+        xmlEncoder.close();
     }
 
 }

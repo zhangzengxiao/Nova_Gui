@@ -42,47 +42,43 @@ public class AddNodeListener implements ActionListener{
         Map<String, Object> style = graph.getStylesheet().getDefaultEdgeStyle();
         style.put(mxConstants.STYLE_EDGE, mxEdgeStyle.ElbowConnector);
         //
-        mxGeometry cellgeometry = new mxGeometry(20,20,100,100);
+        mxGeometry cellgeometry = new mxGeometry(20,20,100,60);
         cellgeometry.setRelative(false);
-        CommandsCell cell = new CommandsCell("Hello",cellgeometry,"");
-        cell.setId("");
+        CommandsCell cell = new CommandsCell("Hello", cellgeometry, "");
+        //mxCell cell = new mxCell("Hello", cellgeometry, "");
+        cell.setId(null);
         cell.setVertex(true);
         cell.setConnectable(true);
+        graph.addCell(cell, graph.getDefaultParent());
 //        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 //        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 //        graph.insertVertex(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 //        mxCell cell = (mxCell) graph.insertVertex(graph.getDefaultParent(), null, "Hello", 20,
 //                20, 100, 100, "");
-        graph.addCell(cell, graph.getDefaultParent());
-        cell.setConnectable(false);
         mxGeometry geo = graph.getModel().getGeometry(cell);
         // The size of the rectangle when the minus sign is clicked
         geo.setAlternateBounds(new mxRectangle(20, 20, 100, 50));
 
-        mxGeometry geo1 = new mxGeometry(0, 0.5, PORT_DIAMETER,
-                        PORT_DIAMETER);
+        mxGeometry geo1 = new mxGeometry(0, 0.5, PORT_DIAMETER, PORT_DIAMETER);
         // Because the origin is at upper left corner, need to translate to
         // position the center of port correctly
         geo1.setOffset(new mxPoint(-PORT_RADIUS, -PORT_RADIUS));
         geo1.setRelative(true);
 
-        mxCell port1 = new mxCell(null, geo1,
-                        "shape=ellipse;perimter=ellipsePerimeter");
+        mxCell port1 = new mxCell(null, geo1,"shape=ellipse;perimter=ellipsePerimeter");
         port1.setValue(cell.getValue());
         port1.setVertex(true);
 
-        mxGeometry geo2 = new mxGeometry(1.0, 0.5, PORT_DIAMETER,
-                        PORT_DIAMETER);
+        mxGeometry geo2 = new mxGeometry(1.0, 0.5, PORT_DIAMETER,PORT_DIAMETER);
         geo2.setOffset(new mxPoint(-PORT_RADIUS, -PORT_RADIUS));
         geo2.setRelative(true);
 
-        mxCell port2 = new mxCell(null, geo2,
-                        "shape=ellipse;perimter=ellipsePerimeter");
+        mxCell port2 = new mxCell(null, geo2,"shape=ellipse;perimter=ellipsePerimeter");
         port2.setValue(cell.getValue());
         port2.setVertex(true);
-
-        graph.addCell(port1, cell);
-        graph.addCell(port2, cell);
+        
+        //graph.addCell(port1, cell);
+        //graph.addCell(port2, cell);
         
     }
 
