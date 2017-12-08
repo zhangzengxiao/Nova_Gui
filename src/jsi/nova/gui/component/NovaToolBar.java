@@ -6,8 +6,11 @@ package jsi.nova.gui.component;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+import org.python.icu.impl.duration.impl.DataRecord.EUnitVariant;
+
 import jsi.nova.gui.listener.AddNodeListener;
 import jsi.nova.gui.listener.OpenGraphListener;
+import jsi.nova.gui.listener.RunWorkFlowListener;
 import jsi.nova.gui.listener.SaveGraphListener;
 import jsi.nova.gui.listener.TestPrintListener;
 import jsi.nova.gui.listener.ZoomInListener;
@@ -52,6 +55,7 @@ public class NovaToolBar extends JToolBar {
         
         testButton = new JButton("≤‚ ‘");
         //
+        runWorkflow.addActionListener(new RunWorkFlowListener());
         addNode.addActionListener(new AddNodeListener());
         saveGraph.addActionListener(new SaveGraphListener());
         openGraph.addActionListener(new OpenGraphListener());

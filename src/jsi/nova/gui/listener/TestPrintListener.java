@@ -33,16 +33,17 @@ public class TestPrintListener implements ActionListener{
         // TODO Auto-generated method stub
         mxGraph graph = ConstantsRepository.graph;
         mxGraphComponent mg = ConstantsRepository.graphComponent;
-        for(Object cell : mg.getCells(mg.getBounds())){
-            if(cell instanceof CommandsCell){
-                //System.out.println(cell);
-            }
-            else{
-                mxCell c = (mxCell) cell;
-                System.out.println(c.getSource());
-                System.out.println(c.getTarget());
-            }
-        }
+        System.out.println("test");
+//        for(Object cell : mg.getCells(mg.getBounds())){
+//            if(cell instanceof CommandsCell){
+//                //System.out.println(cell);
+//            }
+//            else{
+//                mxCell c = (mxCell) cell;
+//                System.out.println(c.getSource());
+//                System.out.println(c.getTarget());
+//            }
+//        }
         
     }
 

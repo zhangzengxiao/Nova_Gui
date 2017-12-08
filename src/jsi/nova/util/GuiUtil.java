@@ -8,6 +8,7 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * @ClassName:     GuiUtil.java
@@ -19,7 +20,7 @@ import javax.swing.JButton;
  */
 public class GuiUtil {
     private static String imageFolder = "./img";
-    
+
     public static void setImageIcon(JButton b, String fileName, String tip) {
         ImageIcon i = new ImageIcon(new File(imageFolder, fileName).getAbsolutePath());
         Image smalli = i.getImage();
@@ -30,6 +31,15 @@ public class GuiUtil {
         b.setToolTipText(tip);
         b.setVerticalTextPosition(JButton.BOTTOM);
         b.setHorizontalTextPosition(JButton.CENTER);
+    }
+
+    //判断是否空
+    public static boolean checkEmpty(String text, String input) {
+        if (0 == text.length()|| text.trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, input + " 不能为空");
+            return false;
+        }
+        return true;
     }
 
 }
