@@ -4,8 +4,11 @@
 package jsi.nova.gui.frame;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import jsi.nova.gui.component.NovaToolBar;
 import jsi.nova.gui.component.TopMenuBar;

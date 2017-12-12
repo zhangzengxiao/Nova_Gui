@@ -3,6 +3,9 @@
  */
 package jsi.nova.util;
 
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
@@ -20,5 +23,9 @@ public class ConstantsRepository {
     public static mxGraph graph = new mxGraph();
     public static mxGraphComponent graphComponent = new mxGraphComponent(graph);
     public static MainFrame mainFrame =null;
+    
+    //projectTree
+    public static DefaultMutableTreeNode projectTreeTop = new DefaultMutableTreeNode("ÏîÄ¿×ÜÀÀ");
+    public static JTree projectTree = new JTree(projectTreeTop);
 
 }

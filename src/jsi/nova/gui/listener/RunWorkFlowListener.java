@@ -67,10 +67,6 @@ public class RunWorkFlowListener implements ActionListener {
             mxCell c = (mxCell) cell;
 
             if (c.isEdge()) {
-//                System.out.println("bian" + c.getAttributes());
-//                System.out.println("bian" + c.getAttributes().get("partent"));
-//                System.out.println("bian" + c.getAttributes().get("child"));
-
                 String parent = c.getSource().getValue().toString();
                 String child =  c.getTarget().getValue().toString();
                 edge_child = edge.get(parent);
@@ -94,9 +90,9 @@ public class RunWorkFlowListener implements ActionListener {
                     bufferedWriter.append("\t\t\t\t<should_transfer_files>YES</should_transfer_files>\n");
                     bufferedWriter.append("\t\t\t\t<when_to_transfer_output>ON_EXIT</when_to_transfer_output>\n");
                     bufferedWriter.append("\t\t\t\t<Universe>vanilla</Universe>\n");
-                    bufferedWriter.append("\t\t\t\t<Log>log/" + c.getValue().toString() + ".log</Log>\n");
-                    bufferedWriter.append("\t\t\t\t<error>log/" + c.getValue().toString() + ".error</error>\n");
-                    bufferedWriter.append("\t\t\t\t<output>log/" + c.getValue().toString() + "out</output>\n");
+                    bufferedWriter.append("\t\t\t\t<Log>log_" + c.getValue().toString() + ".log</Log>\n");
+                    bufferedWriter.append("\t\t\t\t<error>log_" + c.getValue().toString() + ".error</error>\n");
+                    bufferedWriter.append("\t\t\t\t<output>log_" + c.getValue().toString() + ".out</output>\n");
                     bufferedWriter.append("\t\t\t\t<a>Queue</a>\n");
                     bufferedWriter.append("\t\t\t</other>\n");
                     bufferedWriter.append("\t\t</node>\n");
@@ -154,7 +150,16 @@ public class RunWorkFlowListener implements ActionListener {
         File file1 = new File("log");
         file1.mkdir();//首先创建file1对应的文件夹
         PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.execfile(System.getProperty("user.dir") + File.separatorChar + "workflow dev.py");
+        interpreter.execfile(System.getProperty("user.dir") + File.separatorChar + "workflow_dev.py");
+        String cmd1 = "cmd /c cd /d  " +System.getProperty("user.dir") + "&& condor_submit_dag workflow.dag";
+		 System.out.println(cmd1);
+		    try {
+				Runtime.getRuntime().exec(cmd1);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}    
+		  
 
     }
 }
