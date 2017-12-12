@@ -26,6 +26,14 @@ public class MainSplitPanel extends JSplitPane {
         this.setRightComponent(graphAndMonitorSplitPanel);
     }
 
+    public ProjectTreePanel getProjectTreePanel() {
+        return projectTreePanel;
+    }
+
+    public void setProjectTreePanel(ProjectTreePanel projectTreePanel) {
+        this.projectTreePanel = projectTreePanel;
+    }
+
     public GraphAndMonitorSplitPanel getGraphAndMonitorSplitPanel() {
         return graphAndMonitorSplitPanel;
     }

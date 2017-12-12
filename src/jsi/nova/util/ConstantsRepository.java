@@ -26,6 +26,6 @@ public class ConstantsRepository {
     
     //projectTree
     public static DefaultMutableTreeNode projectTreeTop = new DefaultMutableTreeNode("ÏîÄ¿×ÜÀÀ");
-    public static JTree projectTree = new JTree(projectTreeTop);
-
+    //public static JTree projectTree = new JTree(projectTreeTop);
+    public static JTree projectTree = null;
 }

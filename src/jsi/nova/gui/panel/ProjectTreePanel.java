@@ -36,10 +36,13 @@ public class ProjectTreePanel extends JPanel{
 //        top.add(new DefaultMutableTreeNode("test"));
 //        top.add(project1);
 //        top.add(project2);
-        JTree j = ConstantsRepository.projectTree;
-        j.expandRow(0);
-        j.addMouseListener(new ProjectTreeMouseListener());
-        this.add(j);
+//        JTree j = ConstantsRepository.projectTree;
+//        JTree j = new JTree(top);
+
+//        ConstantsRepository.projectTree = j;
+//        j.expandRow(0);
+//        j.addMouseListener(new ProjectTreeMouseListener());
+//        this.add(j);
     }
 
 }

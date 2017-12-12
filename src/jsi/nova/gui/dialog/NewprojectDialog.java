@@ -90,7 +90,8 @@ public class NewprojectDialog extends JDialog{
                         filedir.mkdirs();
                     }
                     ptn.setProjectPath(tprojectLocatiuon.getText().toString());
-                    ConstantsRepository.projectTreeTop.add(ptn);
+                    DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel().getRoot();
+                    dmt.add(ptn);
                     ConstantsRepository.projectTree.updateUI();
                     dispose();
                 }
