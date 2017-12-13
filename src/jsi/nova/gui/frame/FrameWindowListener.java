@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 
 import javax.swing.JTree;
 
+import jsi.nova.gui.listener.ProjectTreeMouseListener;
 import jsi.nova.util.ConstantsRepository;
 
 /**
@@ -105,6 +106,7 @@ public class FrameWindowListener implements WindowListener {
     public void saveProjectTree() throws FileNotFoundException {
         File treeConfig = new File("./config/ProjectTree.con");
         XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(treeConfig)));
+        ConstantsRepository.projectTree.removeMouseListener(ConstantsRepository.projectTree.getMouseListeners()[0]);
         ConstantsRepository.projectTree.setSelectionPath(null);
         xmlEncoder.writeObject(ConstantsRepository.projectTree); 
         xmlEncoder.close();
@@ -114,6 +116,7 @@ public class FrameWindowListener implements WindowListener {
         File treeConfig = new File("./config/ProjectTree.con");
         XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(treeConfig)));
         ConstantsRepository.projectTree = (JTree) xmlDecoder.readObject();
+        ConstantsRepository.projectTree.addMouseListener(new ProjectTreeMouseListener());
     }
 
 }

@@ -11,6 +11,8 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
+import jsi.nova.gui.component.GraphPopMenu;
+import jsi.nova.gui.component.GraphTreeNode;
 import jsi.nova.gui.component.ProjectPopMenu;
 import jsi.nova.gui.component.ProjectTreeNode;
 import jsi.nova.util.ConstantsRepository;
@@ -44,7 +46,10 @@ public class ProjectTreeMouseListener implements MouseListener{
 //            TreePath dtn  = ConstantsRepository.projectTree.getPathForLocation(e.getX(),e.getY());
             DefaultMutableTreeNode dn = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getLastSelectedPathComponent();
             if(dn instanceof ProjectTreeNode){
-                new ProjectPopMenu(dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
+                new ProjectPopMenu((ProjectTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
+            }
+            else if(dn instanceof GraphTreeNode){
+                new GraphPopMenu((GraphTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
             }
         }
     }

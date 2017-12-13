@@ -11,11 +11,67 @@
       <void method="add">
        <object class="javax.swing.tree.DefaultMutableTreeNode"/>
       </void>
+      <void method="add">
+       <object class="jsi.nova.gui.component.GraphTreeNode">
+        <void property="graphFile">
+         <string>C:\Users\57853\Documents\234\graph.jg</string>
+        </void>
+        <void property="userObject">
+         <string>graph</string>
+        </void>
+       </object>
+      </void>
       <void property="projectPath">
-       <string>C:\Users\57853\Documents</string>
+       <string>C:/Users/57853/Documents/234</string>
       </void>
       <void property="userObject">
-       <string>233</string>
+       <string>234</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="jsi.nova.gui.component.ProjectTreeNode">
+      <void method="add">
+       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
+      </void>
+      <void method="add">
+       <object class="jsi.nova.gui.component.GraphTreeNode">
+        <void property="graphFile">
+         <string>C:\Users\57853\Documents\235\graph.jg</string>
+        </void>
+        <void property="userObject">
+         <string>graph</string>
+        </void>
+       </object>
+      </void>
+      <void property="projectPath">
+       <string>C:/Users/57853/Documents/235</string>
+      </void>
+      <void property="userObject">
+       <string>235</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="jsi.nova.gui.component.ProjectTreeNode">
+      <void method="add">
+       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
+      </void>
+      <void method="add">
+       <object class="jsi.nova.gui.component.GraphTreeNode">
+        <void property="graphFile">
+         <string>C:\Users\57853\Documents\236\graph.jg</string>
+        </void>
+        <void property="userObject">
+         <string>graph</string>
+        </void>
+       </object>
+      </void>
+      <void property="projectPath">
+       <string>C:/Users/57853/Documents/236</string>
+      </void>
+      <void property="userObject">
+       <string>236</string>
       </void>
      </object>
     </void>
@@ -35,7 +91,7 @@
       <string>x</string>
       <void method="set">
        <object idref="Point0"/>
-       <int>-44</int>
+       <int>-55</int>
       </void>
      </void>
      <void class="java.awt.Point" method="getField">
@@ -51,8 +107,8 @@
    <void property="leafIcon">
     <object idref="ImageIcon0"/>
    </void>
-   <void property="openIcon">
-    <object idref="ImageIcon0"/>
+   <void property="text">
+    <string>graph</string>
    </void>
   </void>
   <void id="DefaultTreeSelectionModel0" property="selectionModel">

@@ -104,19 +104,7 @@ public class SaveGraphListener implements ActionListener {
             e1.printStackTrace();
         }
         Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
-        List save = new ArrayList<>();
-        for (Object cell : cells) {
-            save.add(cell);
-        }
-        for (Object cell : cells) {
-            mxCell c = (mxCell) cell;
-            if (c.getChildCount() > 0) {
-                for (int i = 0; i < c.getChildCount(); i++) {
-                    save.add(c.getChildAt(i));
-                }
-            }
-        }
-        xmlEncoder.writeObject(save);
+        xmlEncoder.writeObject(cells);
         xmlEncoder.close();
     }
 

@@ -81,37 +81,41 @@ public class OpenGraphListener implements ActionListener {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        //graph.removeCells();
-        List open = new ArrayList();
-        open = (List) xmlDecoder.readObject();
-        graph.getModel().beginUpdate();
-
-        for (Object cell : open) {
-            CommandsCell s = null;
-            final int PORT_DIAMETER = 20;
-            final int PORT_RADIUS = PORT_DIAMETER / 2;
-            mxCell c = (mxCell) cell;
-            if (c instanceof CommandsCell) {
-                graph.addCell(c, graph.getDefaultParent());
-//                mxGeometry geo1 = new mxGeometry(0, 0.5, PORT_DIAMETER, PORT_DIAMETER);
-//                // Because the origin is at upper left corner, need to translate to
-//                // position the center of port correctly
-//                geo1.setOffset(new mxPoint(-PORT_RADIUS, -PORT_RADIUS));
-//                geo1.setRelative(true);
-//
-//                mxCell port1 = new mxCell(null, geo1, "shape=ellipse;perimter=ellipsePerimeter");
-//                port1.setValue("ttttt"); 
-//                port1.setVertex(true);
-//                graph.addCell(port1, c);
-            } else if (c.isEdge()) {
-                graph.addCell(c);
-            } else {
-                mxCell parent = (mxCell) c.getParent();
-                mxCell child = c;
-                System.out.println(graph.addCell(child, parent));
-            }
+        Object[] cells = (Object[]) xmlDecoder.readObject();
+        for(Object cell:cells){
+            graph.addCell(cell);
         }
-        graph.getModel().endUpdate();
+        //graph.removeCells();
+//        List open = new ArrayList();
+//        open = (List) xmlDecoder.readObject();
+//        graph.getModel().beginUpdate();
+//
+//        for (Object cell : open) {
+//            CommandsCell s = null;
+//            final int PORT_DIAMETER = 20;
+//            final int PORT_RADIUS = PORT_DIAMETER / 2;
+//            mxCell c = (mxCell) cell;
+//            if (c instanceof CommandsCell) {
+//                graph.addCell(c, graph.getDefaultParent());
+////                mxGeometry geo1 = new mxGeometry(0, 0.5, PORT_DIAMETER, PORT_DIAMETER);
+////                // Because the origin is at upper left corner, need to translate to
+////                // position the center of port correctly
+////                geo1.setOffset(new mxPoint(-PORT_RADIUS, -PORT_RADIUS));
+////                geo1.setRelative(true);
+////
+////                mxCell port1 = new mxCell(null, geo1, "shape=ellipse;perimter=ellipsePerimeter");
+////                port1.setValue("ttttt"); 
+////                port1.setVertex(true);
+////                graph.addCell(port1, c);
+//            } else if (c.isEdge()) {
+//                graph.addCell(c);
+//            } else {
+//                mxCell parent = (mxCell) c.getParent();
+//                mxCell child = c;
+//                System.out.println(graph.addCell(child, parent));
+//            }
+//        }
+//        graph.getModel().endUpdate();
         xmlDecoder.close();
     }
 

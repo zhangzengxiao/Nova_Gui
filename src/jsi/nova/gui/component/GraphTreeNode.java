@@ -3,6 +3,8 @@
  */
 package jsi.nova.gui.component;
 
+import java.io.File;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
@@ -18,7 +20,8 @@ public class GraphTreeNode extends DefaultMutableTreeNode{
     /**
      * 
      */
-    private String graphName = null;
+    private String graphName;
+    private String graphFile;
     
     public GraphTreeNode() {
         super();
@@ -55,6 +58,13 @@ public class GraphTreeNode extends DefaultMutableTreeNode{
     public void setGraphName(String graphName) {
         this.graphName = graphName;
     }
-    
+
+    public String getGraphFile() {
+        return graphFile;
+    }
+
+    public void setGraphFile(String graphFile) {
+        this.graphFile = graphFile;
+    }
 
 }
