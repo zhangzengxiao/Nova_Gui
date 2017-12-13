@@ -5,6 +5,7 @@ package jsi.nova.gui.projecttree;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -20,24 +21,18 @@ import jsi.nova.util.ConstantsRepository;
  */
 public class ProjectTreeMouseListener implements MouseListener{
 
-    /* (non-Javadoc)
-     * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
-     */
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
         
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
-     */
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
         DefaultMutableTreeNode dn = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getLastSelectedPathComponent();
+        //右键事件
         if(e.getButton()==3){
-//            TreePath dtn  = ConstantsRepository.projectTree.getPathForLocation(e.getX(),e.getY());
             if(dn instanceof ProjectTreeNode){
                 new ProjectPopMenu((ProjectTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
             }
@@ -45,39 +40,31 @@ public class ProjectTreeMouseListener implements MouseListener{
                 new GraphPopMenu((GraphTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
             }
         }
-//        if(e.getClickCount()==2 && e.getButton()==1){
-//            if(dn instanceof GraphTreeNode){
-//                try {
-//                    GraphPopMenu.openGraphFile();
-//                } catch (FileNotFoundException e1) {
-//                    // TODO Auto-generated catch block
-//                    e1.printStackTrace();
-//                }
-//            }
-//        }
+        //双击事件
+        if(e.getClickCount()==2 && e.getButton()==1){
+            if(dn instanceof GraphTreeNode){
+                try {
+                    GraphPopMenuActions.openGraphFile((GraphTreeNode) dn);
+                } catch (FileNotFoundException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
-     */
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
         
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
-     */
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
         
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
-     */
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub

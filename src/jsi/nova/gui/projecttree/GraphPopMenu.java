@@ -35,7 +35,7 @@ public class GraphPopMenu extends JPopupMenu{
     private JMenuItem saveGraph;
     private JMenuItem runGraph;
     private JMenuItem deleteGraph;
-    private static GraphTreeNode node;
+    private GraphTreeNode node;
     public GraphPopMenu(GraphTreeNode node) {
         // TODO Auto-generated constructor stub
         this.node = node;
@@ -44,32 +44,8 @@ public class GraphPopMenu extends JPopupMenu{
         runGraph = new JMenuItem("ÔËÐÐ");
         deleteGraph = new JMenuItem("É¾³ý");
         //
-        openGraph.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                try {
-                    openGraphFile();
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                } 
-            }
-        });
-        
-        saveGraph.addActionListener(new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                try {
-                    saveGraphFile();
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            }
-        });
+        openGraph.addActionListener(new GraphPopMenuActions.openGraphListener(node));     
+        saveGraph.addActionListener(new GraphPopMenuActions.saveGraphListener(node));
         //
         this.add(openGraph);
         this.addSeparator();
@@ -78,29 +54,5 @@ public class GraphPopMenu extends JPopupMenu{
         this.add(runGraph);
         this.addSeparator();
         this.add(deleteGraph);
-    }
-    public static void openGraphFile() throws FileNotFoundException{
-        //IfChangedGraph graph = new IfChangedGraph();
-        mxGraph graph = new mxGraph();
-        File graphFile = new File(node.getGraphFile());
-        //ConstantsRepository.OPENDGRAPH.put(graphFile.getAbsolutePath(), graph);
-        ConstantsRepository.CURRENTWORKINGFILE = graphFile.getAbsolutePath();
-        ConstantsRepository.CURRENTWORKINGGRAPH = graph;
-        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(graphFile)));
-        //System.out.println(xmlDecoder.readObject().toString());
-        Object[] cells = (Object[]) xmlDecoder.readObject();
-        for(Object cell:cells){
-            graph.addCell(cell);
-        }
-        xmlDecoder.close();
-        ConstantsRepository.graphComponent.setGridVisible(true);
-        ConstantsRepository.graphComponent.setGraph(graph);
-        ConstantsRepository.graphComponent.updateUI();
-    }
-    public void saveGraphFile() throws FileNotFoundException{
-        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(new File(node.getGraphFile()))));
-        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
-        xmlEncoder.writeObject(cells);
-        xmlEncoder.close();
     }
 }
