@@ -13,9 +13,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.JTree;
 
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.python.antlr.PythonParser.return_stmt_return;
 
 import com.mxgraph.view.mxGraph;
@@ -56,7 +59,14 @@ public class FrameWindowListener implements WindowListener {
     public void windowClosing(WindowEvent e) {
         // TODO Auto-generated method stub
         //判断图是否改变过
-        
+        try {
+            if(ConstantsRepository.CURRENTWORKINGFILE!=null && ConstantsRepository.CURRENTWORKINGGRAPH!=null){
+            graphChanged(ConstantsRepository.CURRENTWORKINGFILE, ConstantsRepository.CURRENTWORKINGGRAPH);
+            }
+        } catch (IOException e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
         //保存项目结构树
         try {
             saveProjectTree();
@@ -115,7 +125,7 @@ public class FrameWindowListener implements WindowListener {
         XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(treeConfig)));
         ConstantsRepository.projectTree.removeMouseListener(ConstantsRepository.projectTree.getMouseListeners()[0]);
         ConstantsRepository.projectTree.setSelectionPath(null);
-        xmlEncoder.writeObject(ConstantsRepository.projectTree); 
+        xmlEncoder.writeObject(ConstantsRepository.projectTree);
         xmlEncoder.close();
     }
 
@@ -126,11 +136,24 @@ public class FrameWindowListener implements WindowListener {
         ConstantsRepository.projectTree.addMouseListener(new ProjectTreeMouseListener());
         xmlDecoder.close();
     }
-    public Boolean graphChanged(String path, mxGraph graph){
-        if(ConstantsRepository.OLDGRAPH.equals(graph)){
-            return true;
+
+    public Boolean graphChanged(String path, mxGraph graph) throws IOException {
+        File tmp = new File(path + ".tmp");
+        tmp.createNewFile();
+        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(tmp)));
+        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
+        xmlEncoder.writeObject(cells);
+        xmlEncoder.close();
+        File old = new File(path);
+        String oldFileMD5 = new String(Hex.encodeHex(DigestUtils.md5(new FileInputStream(old))));
+        String tmpFileMD5 = new String(Hex.encodeHex(DigestUtils.md5(new FileInputStream(tmp))));
+        System.out.println(oldFileMD5);
+        System.out.println(tmpFileMD5);
+        if (oldFileMD5 == null || tmpFileMD5 == null) {
+            return false;
         }
-        return false;
+        return (!oldFileMD5.equals(tmpFileMD5));
+
     }
 
 }

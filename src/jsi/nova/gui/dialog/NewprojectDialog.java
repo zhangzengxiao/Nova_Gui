@@ -30,7 +30,7 @@ import jsi.nova.util.GuiUtil;
  * @Date           2017年12月7日 下午4:22:58 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class NewprojectDialog extends JDialog{
+public class NewprojectDialog extends JDialog {
     private JLabel lprojectName = null;
     private JLabel lprojectLocation = null;
     private TextField tprojectname = null;
@@ -39,63 +39,53 @@ public class NewprojectDialog extends JDialog{
     private JButton bconfirm = null;
     private JButton bcancel = null;
     private String path = null;
+
     public NewprojectDialog() {
         // TODO Auto-generated constructor stub
         lprojectName = new JLabel("项目名称:");
         lprojectName.setBounds(10, 18, 65, 15);
-        
+
         lprojectLocation = new JLabel("项目位置:");
         lprojectLocation.setBounds(10, 49, 65, 15);
-        
+
         tprojectname = new TextField();
         tprojectname.setBounds(75, 15, 253, 21);
-        
+
         tprojectLocatiuon = new TextField();
         tprojectLocatiuon.setBounds(75, 46, 253, 21);
-        
+
         bbrowse = new JButton("浏览...");
         bbrowse.setBounds(338, 44, 93, 23);
-        
+
         bconfirm = new JButton("确认");
         bconfirm.setBounds(235, 79, 93, 23);
-        
+
         bcancel = new JButton("取消");
-        bcancel.setBounds(338, 76, 93, 23);
+        bcancel.setBounds(338, 79, 93, 23);
         //
         bbrowse.addActionListener(new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                JFileChooser fileChooser = new JFileChooser();
-                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                fileChooser.showOpenDialog(null);
-                File file = fileChooser.getSelectedFile();
-                path = file.getAbsolutePath();
-                tprojectLocatiuon.setText(path);
+                chooseWorkingPath();
             }
         });
-        
+
         bconfirm.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                newProject();
+            }
+        });
+        bcancel.addActionListener(new ActionListener() {
             
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                if(GuiUtil.checkEmpty(tprojectname.getText().toString(), "项目名称") && GuiUtil.checkEmpty(tprojectLocatiuon.getText().toString(), "项目位置")){
-                    ProjectTreeNode ptn = new ProjectTreeNode(tprojectname.getText().toString());
-                    String windowspath = tprojectLocatiuon.getText().toString()+"\\"+tprojectname.getText().toString();
-                    String javapath = windowspath.replace("\\", "/");
-                    File filedir = new File(javapath);
-                    if(!filedir.exists()){
-                        filedir.mkdirs();
-                    }
-                    ptn.setProjectPath(javapath);
-                    DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel().getRoot();
-                    dmt.add(ptn);
-                    ConstantsRepository.projectTree.updateUI();
-                    dispose();
-                }
-
+                dispose();
             }
         });
         //
@@ -111,6 +101,37 @@ public class NewprojectDialog extends JDialog{
         this.setSize(451, 150);
         this.setModal(true);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);        
+        this.setVisible(true);
+    }
+
+    public void chooseWorkingPath() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.showOpenDialog(null);
+        File file = fileChooser.getSelectedFile();
+        if (!(file == null)) {
+            path = file.getAbsolutePath();
+            tprojectLocatiuon.setText(path);
+        }
+    }
+    public void newProject(){
+        if (GuiUtil.checkEmpty(tprojectname.getText().toString(), "项目名称")
+                && GuiUtil.checkEmpty(tprojectLocatiuon.getText().toString(), "项目位置")) {
+            ProjectTreeNode ptn = new ProjectTreeNode(tprojectname.getText().toString());
+            String windowspath = tprojectLocatiuon.getText().toString() + "\\"
+                    + tprojectname.getText().toString();
+            String javapath = windowspath.replace("\\", "/");
+            File filedir = new File(javapath);
+            if (!filedir.exists()) {
+                filedir.mkdirs();
+            }
+            ptn.setProjectPath(javapath);
+            DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel()
+                    .getRoot();
+            dmt.add(ptn);
+            ConstantsRepository.projectTree.updateUI();
+            dispose();
+        }
+
     }
 }
