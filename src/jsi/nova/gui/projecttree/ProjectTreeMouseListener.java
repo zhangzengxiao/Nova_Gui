@@ -41,16 +41,16 @@ public class ProjectTreeMouseListener implements MouseListener{
             }
         }
         //Ë«»÷ÊÂ¼þ
-        if(e.getClickCount()==2 && e.getButton()==1){
-            if(dn instanceof GraphTreeNode){
-                try {
-                    GraphPopMenuActions.openGraphFile((GraphTreeNode) dn);
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            }
-        }
+//        if(e.getClickCount()==2 && e.getButton()==1){
+//            if(dn instanceof GraphTreeNode){
+//                try {
+//                    GraphPopMenuActions.openGraphFile((GraphTreeNode) dn);
+//                } catch (FileNotFoundException e1) {
+//                    // TODO Auto-generated catch block
+//                    e1.printStackTrace();
+//                }
+//            }
+//        }
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ProjectTreeMouseListener implements MouseListener{
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-        
+        //ConstantsRepository.projectTree.setSelectionPath(ConstantsRepository.projectTree.getPathForLocation(e.getX(), e.getY()));
     }
 
     @Override

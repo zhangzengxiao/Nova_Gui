@@ -37,7 +37,7 @@ public class ProjectPopMenuActions {
             }
         }
     }
-
+    
     public static class deleteProjectListener implements ActionListener {
         private ProjectTreeNode node;
        
@@ -48,6 +48,7 @@ public class ProjectPopMenuActions {
             deleteProject(node);
         }
     }
+    
     public static void addGraphTreeNode(ProjectTreeNode node) throws IOException {
         GraphTreeNode graph = new GraphTreeNode("graph");
         String path = node.getProjectPath();
@@ -59,18 +60,20 @@ public class ProjectPopMenuActions {
             e.printStackTrace();
         }
         FileWriter fw = new FileWriter(graphFile);
-        StringBuilder sb = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        sb.append("<java version=\"1.8.0_144\" class=\"java.beans.XMLDecoder\">");
-        sb.append("<array class=\"java.lang.Object\" length=\"0\"/>");
-        sb.append("</java>");
+        StringBuilder sb = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+        sb.append("<java version=\"1.8.0_144\" class=\"java.beans.XMLDecoder\">\n");
+        sb.append(" <array class=\"java.lang.Object\" length=\"0\"/>\n");
+        sb.append("</java>\n");
         fw.write(sb.toString());
         fw.close();
         node.add(graph);
         ConstantsRepository.projectTree.updateUI();
     }
+    
     public static void deleteProject(ProjectTreeNode node){
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel().getRoot();
         root.remove(node);
         ConstantsRepository.projectTree.updateUI();
      }
+
 }

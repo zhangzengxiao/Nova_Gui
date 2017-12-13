@@ -4,12 +4,15 @@
 package jsi.nova.gui.frame;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
 import jsi.nova.gui.component.NovaToolBar;
 import jsi.nova.gui.component.TopMenuBar;
 import jsi.nova.gui.panel.MainSplitPanel;
+import jsi.nova.gui.projecttree.GraphPopMenuActions;
 import jsi.nova.util.ConstantsRepository;
 
 /**
@@ -47,5 +50,22 @@ public class MainFrame extends JFrame{
     }
     public void setMainSplitPanel(MainSplitPanel mainSplitPanel) {
         this.mainSplitPanel = mainSplitPanel;
+    }
+    
+    @Override
+    protected void processWindowEvent(WindowEvent e) {
+        // TODO Auto-generated method stub
+        if(e.getID() == WindowEvent.WINDOW_CLOSING){
+            try {
+                //判断当前图像是否更改过
+                if(!GraphPopMenuActions.ifSaved()){
+                    return;
+                }
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+        super.processWindowEvent(e);
     }
 }

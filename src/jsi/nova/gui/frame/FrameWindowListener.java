@@ -23,6 +23,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.gui.projecttree.GraphPopMenuActions;
 import jsi.nova.gui.projecttree.ProjectTreeMouseListener;
 import jsi.nova.util.ConstantsRepository;
 
@@ -59,15 +60,6 @@ public class FrameWindowListener implements WindowListener {
     public void windowClosing(WindowEvent e) {
         // TODO Auto-generated method stub
         //判断图是否改变过
-        try {
-            if(ConstantsRepository.CURRENTWORKINGFILE!=null && ConstantsRepository.CURRENTWORKINGGRAPH!=null){
-            graphChanged(ConstantsRepository.CURRENTWORKINGFILE, ConstantsRepository.CURRENTWORKINGGRAPH);
-            }
-        } catch (IOException e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
-        }
-        System.out.println(JOptionPane.showConfirmDialog(null, "是否退出"));
         //保存项目结构树
         try {
             saveProjectTree();
@@ -136,25 +128,6 @@ public class FrameWindowListener implements WindowListener {
         ConstantsRepository.projectTree = (JTree) xmlDecoder.readObject();
         ConstantsRepository.projectTree.addMouseListener(new ProjectTreeMouseListener());
         xmlDecoder.close();
-    }
-
-    public Boolean graphChanged(String path, mxGraph graph) throws IOException {
-        File tmp = new File(path + ".tmp");
-        tmp.createNewFile();
-        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(tmp)));
-        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
-        xmlEncoder.writeObject(cells);
-        xmlEncoder.close();
-        File old = new File(path);
-        String oldFileMD5 = new String(Hex.encodeHex(DigestUtils.md5(new FileInputStream(old))));
-        String tmpFileMD5 = new String(Hex.encodeHex(DigestUtils.md5(new FileInputStream(tmp))));
-        System.out.println(oldFileMD5);
-        System.out.println(tmpFileMD5);
-        if (oldFileMD5 == null || tmpFileMD5 == null) {
-            return false;
-        }
-        return (!oldFileMD5.equals(tmpFileMD5));
-
     }
 
 }
