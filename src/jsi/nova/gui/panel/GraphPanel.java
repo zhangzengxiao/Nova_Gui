@@ -8,9 +8,8 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.view.mxGraph;
 
-import jsi.nova.gui.listener.LeftMouseButtonListener;
+import jsi.nova.jgraphx.LeftMouseButtonListener;
 import jsi.nova.util.ConstantsRepository;
 
 /**

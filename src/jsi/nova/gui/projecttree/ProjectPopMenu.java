@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.component;
+package jsi.nova.gui.projecttree;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,17 +36,24 @@ public class ProjectPopMenu extends JPopupMenu{
         deleteProject = new JMenuItem("É¾³ýÏîÄ¿");
         //
         newGraph.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 try {
                     addGraphTreeNode();
                 } catch (IOException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
             }
         });
+        //
+        deleteProject.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                deleteProject();
+            }
+        });
+        //
         this.add(newGraph);
         this.addSeparator();
         this.add(deleteProject);
@@ -72,5 +79,10 @@ public class ProjectPopMenu extends JPopupMenu{
         fw.close();
         node.add(graph);
         ConstantsRepository.projectTree.updateUI();
+    }
+    public void deleteProject(){
+       DefaultMutableTreeNode root = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel().getRoot();
+       root.remove(node);
+       ConstantsRepository.projectTree.updateUI();
     }
 }

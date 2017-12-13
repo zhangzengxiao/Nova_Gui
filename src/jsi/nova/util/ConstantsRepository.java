@@ -13,7 +13,6 @@ import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
 import jsi.nova.gui.frame.MainFrame;
-import jsi.nova.jgraphx.IfChangedGraph;
 
 /**
  * @ClassName:     ConstantsRepository.java

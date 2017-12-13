@@ -14,22 +14,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.AbstractAction;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.mxgraph.io.mxCodec;
-import com.mxgraph.layout.mxGraphLayout;
-import com.mxgraph.model.mxCell;
 import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.swing.mxGraphComponent.mxGraphControl;
-import com.mxgraph.swing.handler.mxGraphHandler;
 import com.mxgraph.util.mxCellRenderer;
 import com.mxgraph.util.mxResources;
 import com.mxgraph.util.mxXmlUtils;

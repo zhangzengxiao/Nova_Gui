@@ -15,15 +15,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTree;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.python.antlr.PythonParser.return_stmt_return;
 
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.gui.listener.ProjectTreeMouseListener;
+import jsi.nova.gui.projecttree.ProjectTreeMouseListener;
 import jsi.nova.util.ConstantsRepository;
 
 /**
@@ -67,6 +67,7 @@ public class FrameWindowListener implements WindowListener {
             // TODO Auto-generated catch block
             e2.printStackTrace();
         }
+        System.out.println(JOptionPane.showConfirmDialog(null, "是否退出"));
         //保存项目结构树
         try {
             saveProjectTree();

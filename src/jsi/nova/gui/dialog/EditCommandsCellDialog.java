@@ -12,8 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.mxgraph.model.mxCell;
-
 import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.ConstantsRepository;
 

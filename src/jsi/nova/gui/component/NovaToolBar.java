@@ -6,8 +6,6 @@ package jsi.nova.gui.component;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
-import org.python.icu.impl.duration.impl.DataRecord.EUnitVariant;
-
 import jsi.nova.gui.listener.AddNodeListener;
 import jsi.nova.gui.listener.OpenGraphListener;
 import jsi.nova.gui.listener.RunWorkFlowListener;

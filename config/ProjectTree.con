@@ -7,14 +7,14 @@
      <string>项目总览</string>
     </void>
     <void method="add">
-     <object class="jsi.nova.gui.component.ProjectTreeNode">
+     <object class="jsi.nova.gui.projecttree.ProjectTreeNode">
       <void method="add">
        <object class="javax.swing.tree.DefaultMutableTreeNode"/>
       </void>
       <void method="add">
-       <object class="jsi.nova.gui.component.GraphTreeNode">
+       <object class="jsi.nova.gui.projecttree.GraphTreeNode">
         <void property="graphFile">
-         <string>C:\Users\57853\Documents\234\graph.jg</string>
+         <string>C:\Users\57853\Documents\239\graph.jg</string>
         </void>
         <void property="userObject">
          <string>graph</string>
@@ -22,56 +22,10 @@
        </object>
       </void>
       <void property="projectPath">
-       <string>C:/Users/57853/Documents/234</string>
+       <string>C:/Users/57853/Documents/239</string>
       </void>
       <void property="userObject">
-       <string>234</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="jsi.nova.gui.component.ProjectTreeNode">
-      <void method="add">
-       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
-      </void>
-      <void method="add">
-       <object class="jsi.nova.gui.component.GraphTreeNode">
-        <void property="graphFile">
-         <string>C:\Users\57853\Documents\235\graph.jg</string>
-        </void>
-        <void property="userObject">
-         <string>graph</string>
-        </void>
-       </object>
-      </void>
-      <void property="projectPath">
-       <string>C:/Users/57853/Documents/235</string>
-      </void>
-      <void property="userObject">
-       <string>235</string>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="jsi.nova.gui.component.ProjectTreeNode">
-      <void method="add">
-       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
-      </void>
-      <void method="add">
-       <object class="jsi.nova.gui.component.GraphTreeNode">
-        <void property="graphFile">
-         <string>C:\Users\57853\Documents\236\graph.jg</string>
-        </void>
-        <void property="userObject">
-         <string>graph</string>
-        </void>
-       </object>
-      </void>
-      <void property="projectPath">
-       <string>C:/Users/57853/Documents/236</string>
-      </void>
-      <void property="userObject">
-       <string>236</string>
+       <string>239</string>
       </void>
      </object>
     </void>
@@ -84,7 +38,7 @@
       <string>x</string>
       <void method="set">
        <object idref="Point0"/>
-       <int>-44</int>
+       <int>-55</int>
       </void>
      </void>
      <void class="java.awt.Point" method="getField">
@@ -99,6 +53,12 @@
    <void id="ImageIcon0" property="closedIcon"/>
    <void property="leafIcon">
     <object idref="ImageIcon0"/>
+   </void>
+   <void property="openIcon">
+    <object idref="ImageIcon0"/>
+   </void>
+   <void property="text">
+    <string>graph</string>
    </void>
   </void>
   <void id="DefaultTreeSelectionModel0" property="selectionModel">

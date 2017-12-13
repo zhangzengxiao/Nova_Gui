@@ -1,29 +1,24 @@
 /**
  * 
  */
-package jsi.nova.gui.listener;
+package jsi.nova.gui.projecttree;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.SwingUtilities;
+import javax.swing.tree.DefaultMutableTreeNode;
 
-import com.mxgraph.model.mxCell;
-
-import jsi.nova.gui.component.CellPopMenu;
-import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.ConstantsRepository;
 
 /**
- * @ClassName:     LeftMouseButtonListener.java
- * @Description:   LeftMouseButtonListener
+ * @ClassName:     ProjectTreeMouseListener.java
+ * @Description:   TODO(用一句话描述该文件做什么) 
  * @author         zhangzengxiao
  * @version        V1.0  
- * @Date           2017年12月5日 下午3:57:59 
+ * @Date           2017年12月8日 下午2:45:39 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class LeftMouseButtonListener implements MouseListener {
-    private CellPopMenu cmenu;
+public class ProjectTreeMouseListener implements MouseListener{
 
     /* (non-Javadoc)
      * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
@@ -31,7 +26,7 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
-
+        
     }
 
     /* (non-Javadoc)
@@ -40,7 +35,26 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-
+        DefaultMutableTreeNode dn = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getLastSelectedPathComponent();
+        if(e.getButton()==3){
+//            TreePath dtn  = ConstantsRepository.projectTree.getPathForLocation(e.getX(),e.getY());
+            if(dn instanceof ProjectTreeNode){
+                new ProjectPopMenu((ProjectTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
+            }
+            else if(dn instanceof GraphTreeNode){
+                new GraphPopMenu((GraphTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
+            }
+        }
+//        if(e.getClickCount()==2 && e.getButton()==1){
+//            if(dn instanceof GraphTreeNode){
+//                try {
+//                    GraphPopMenu.openGraphFile();
+//                } catch (FileNotFoundException e1) {
+//                    // TODO Auto-generated catch block
+//                    e1.printStackTrace();
+//                }
+//            }
+//        }
     }
 
     /* (non-Javadoc)
@@ -49,20 +63,7 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        mxCell cell = (mxCell) ConstantsRepository.graphComponent.getCellAt(e.getX(), e.getY());
-
-        if (SwingUtilities.isRightMouseButton(e)) {
-            if (cell != null) {
-                if (cell instanceof CommandsCell) {
-                    cmenu = new CellPopMenu((CommandsCell) cell);
-                    cmenu.show(ConstantsRepository.graphComponent, e.getX(), e.getY());
-                }
-                if(cell.isEdge()){
-                    cmenu = new CellPopMenu(cell);
-                    cmenu.show(ConstantsRepository.graphComponent, e.getX(), e.getY());
-                }
-            }
-        }
+        
     }
 
     /* (non-Javadoc)
@@ -71,7 +72,7 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         // TODO Auto-generated method stub
-
+        
     }
 
     /* (non-Javadoc)
@@ -80,7 +81,7 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         // TODO Auto-generated method stub
-
+        
     }
 
 }

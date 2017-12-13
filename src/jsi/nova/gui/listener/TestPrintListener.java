@@ -6,16 +6,9 @@ package jsi.nova.gui.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import com.mxgraph.model.mxCell;
 import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.swing.view.mxCellEditor;
-import com.mxgraph.util.mxDomUtils;
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.ConstantsRepository;
 
 /**

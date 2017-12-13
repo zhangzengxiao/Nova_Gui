@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.component;
+package jsi.nova.gui.projecttree;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,11 +17,8 @@ import java.io.FileOutputStream;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import com.mxgraph.util.mxEventObject;
-import com.mxgraph.util.mxEventSource.mxIEventListener;
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.jgraphx.IfChangedGraph;
 import jsi.nova.util.ConstantsRepository;
 
 /**
@@ -38,7 +35,7 @@ public class GraphPopMenu extends JPopupMenu{
     private JMenuItem saveGraph;
     private JMenuItem runGraph;
     private JMenuItem deleteGraph;
-    private GraphTreeNode node;
+    private static GraphTreeNode node;
     public GraphPopMenu(GraphTreeNode node) {
         // TODO Auto-generated constructor stub
         this.node = node;
@@ -82,7 +79,7 @@ public class GraphPopMenu extends JPopupMenu{
         this.addSeparator();
         this.add(deleteGraph);
     }
-    public void openGraphFile() throws FileNotFoundException{
+    public static void openGraphFile() throws FileNotFoundException{
         //IfChangedGraph graph = new IfChangedGraph();
         mxGraph graph = new mxGraph();
         File graphFile = new File(node.getGraphFile());

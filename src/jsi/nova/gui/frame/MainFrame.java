@@ -4,11 +4,8 @@
 package jsi.nova.gui.frame;
 
 import java.awt.BorderLayout;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import jsi.nova.gui.component.NovaToolBar;
 import jsi.nova.gui.component.TopMenuBar;
@@ -41,7 +38,7 @@ public class MainFrame extends JFrame{
         this.setResizable(true);
         this.setSize(1000,620);
         this.setVisible(true);
-        mainSplitPanel.setDividerLocation(0.1);
+        mainSplitPanel.setDividerLocation(0.12);
         mainSplitPanel.getGraphAndMonitorSplitPanel().setDividerLocation(0.8);
         this.setLocationRelativeTo(null);
     }

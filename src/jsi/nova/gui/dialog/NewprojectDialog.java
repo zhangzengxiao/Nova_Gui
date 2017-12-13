@@ -7,18 +7,14 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Enumeration;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.plaf.FileChooserUI;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreeNode;
 
-import jsi.nova.gui.component.ProjectTreeNode;
+import jsi.nova.gui.projecttree.ProjectTreeNode;
 import jsi.nova.util.ConstantsRepository;
 import jsi.nova.util.GuiUtil;
 

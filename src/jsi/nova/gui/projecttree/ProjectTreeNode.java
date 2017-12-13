@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.component;
+package jsi.nova.gui.projecttree;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 

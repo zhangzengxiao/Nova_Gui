@@ -11,7 +11,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import jsi.nova.gui.dialog.NewprojectDialog;
-import jsi.nova.gui.listener.TestPrintListener;
 
 /**
  * @ClassName:     TopMenuBar.java

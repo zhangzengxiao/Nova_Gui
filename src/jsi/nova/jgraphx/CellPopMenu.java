@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.component;
+package jsi.nova.jgraphx;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +49,7 @@ public class CellPopMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method cstub
                 Object[] cells = {cell};
-                ConstantsRepository.graph.removeCells(cells);
+                ConstantsRepository.graphComponent.getGraph().removeCells(cells);
             }
         });
         this.add(edit);
