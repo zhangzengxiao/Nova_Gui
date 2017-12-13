@@ -35,54 +35,12 @@ public class ProjectPopMenu extends JPopupMenu{
         newGraph = new JMenuItem("新建流程图");
         deleteProject = new JMenuItem("删除项目");
         //
-        newGraph.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    addGraphTreeNode();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
+        newGraph.addActionListener(new ProjectPopMenuActions.addGraphListener(node));
         //
-        deleteProject.addActionListener(new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                deleteProject();
-            }
-        });
+        deleteProject.addActionListener(new ProjectPopMenuActions.deleteProjectListener(node));
         //
         this.add(newGraph);
         this.addSeparator();
         this.add(deleteProject);
-    }
-
-    public void addGraphTreeNode() throws IOException{
-        GraphTreeNode graph = new GraphTreeNode("graph");
-        String path = node.getProjectPath();
-        File graphFile = new File(path, "graph.jg");
-        graph.setGraphFile(graphFile.getAbsolutePath());
-        try {
-            graphFile.createNewFile();
-        } catch (IOException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        FileWriter fw = new FileWriter(graphFile);
-        StringBuilder sb = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        sb.append("<java version=\"1.8.0_144\" class=\"java.beans.XMLDecoder\">");
-        sb.append("<array class=\"java.lang.Object\" length=\"0\"/>");
-        sb.append("</java>");
-        fw.write(sb.toString());
-        fw.close();
-        node.add(graph);
-        ConstantsRepository.projectTree.updateUI();
-    }
-    public void deleteProject(){
-       DefaultMutableTreeNode root = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel().getRoot();
-       root.remove(node);
-       ConstantsRepository.projectTree.updateUI();
     }
 }

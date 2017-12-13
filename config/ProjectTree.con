@@ -50,11 +50,8 @@
      </void>
     </object>
    </void>
-   <void id="ImageIcon0" property="closedIcon"/>
+   <void id="ImageIcon0" property="icon"/>
    <void property="leafIcon">
-    <object idref="ImageIcon0"/>
-   </void>
-   <void property="openIcon">
     <object idref="ImageIcon0"/>
    </void>
    <void property="text">
