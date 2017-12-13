@@ -16,6 +16,10 @@ import java.io.FileOutputStream;
 
 import javax.swing.JTree;
 
+import org.python.antlr.PythonParser.return_stmt_return;
+
+import com.mxgraph.view.mxGraph;
+
 import jsi.nova.gui.listener.ProjectTreeMouseListener;
 import jsi.nova.util.ConstantsRepository;
 
@@ -51,6 +55,9 @@ public class FrameWindowListener implements WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
         // TODO Auto-generated method stub
+        //判断图是否改变过
+        
+        //保存项目结构树
         try {
             saveProjectTree();
         } catch (FileNotFoundException e1) {
@@ -117,6 +124,13 @@ public class FrameWindowListener implements WindowListener {
         XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(treeConfig)));
         ConstantsRepository.projectTree = (JTree) xmlDecoder.readObject();
         ConstantsRepository.projectTree.addMouseListener(new ProjectTreeMouseListener());
+        xmlDecoder.close();
+    }
+    public Boolean graphChanged(String path, mxGraph graph){
+        if(ConstantsRepository.OLDGRAPH.equals(graph)){
+            return true;
+        }
+        return false;
     }
 
 }

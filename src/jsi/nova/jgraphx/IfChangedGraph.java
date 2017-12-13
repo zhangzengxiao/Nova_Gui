@@ -13,6 +13,13 @@ import com.mxgraph.view.mxGraph;
  * @Date           2017年12月13日 下午1:45:16 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class IfChangedGraph extends mxGraph{
+public class IfChangedGraph extends mxGraph implements Cloneable{
     private int hasBeenChanged = 0;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        // TODO Auto-generated method stub
+        return super.clone();
+    }
+    
 }

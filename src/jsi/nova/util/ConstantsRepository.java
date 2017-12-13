@@ -3,6 +3,9 @@
  */
 package jsi.nova.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -10,6 +13,7 @@ import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
 import jsi.nova.gui.frame.MainFrame;
+import jsi.nova.jgraphx.IfChangedGraph;
 
 /**
  * @ClassName:     ConstantsRepository.java
@@ -28,4 +32,9 @@ public class ConstantsRepository {
     public static DefaultMutableTreeNode projectTreeTop = new DefaultMutableTreeNode("ÏîÄ¿×ÜÀÀ");
     //public static JTree projectTree = new JTree(projectTreeTop);
     public static JTree projectTree = null;
+    //
+    public static Map<String,mxGraph> OPENDGRAPH = new HashMap<String,mxGraph>();
+    public static String CURRENTWORKINGFILE;
+    public static mxGraph CURRENTWORKINGGRAPH;
+    public static mxGraph OLDGRAPH;
 }

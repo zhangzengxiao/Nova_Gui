@@ -6,14 +6,19 @@ package jsi.nova.gui.component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import com.mxgraph.util.mxEventObject;
+import com.mxgraph.util.mxEventSource.mxIEventListener;
 import com.mxgraph.view.mxGraph;
 
 import jsi.nova.jgraphx.IfChangedGraph;
@@ -51,6 +56,20 @@ public class GraphPopMenu extends JPopupMenu{
                 } catch (FileNotFoundException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
+                } 
+            }
+        });
+        
+        saveGraph.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                try {
+                    saveGraphFile();
+                } catch (FileNotFoundException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
                 }
             }
         });
@@ -64,8 +83,12 @@ public class GraphPopMenu extends JPopupMenu{
         this.add(deleteGraph);
     }
     public void openGraphFile() throws FileNotFoundException{
-        IfChangedGraph graph = new IfChangedGraph();
+        //IfChangedGraph graph = new IfChangedGraph();
+        mxGraph graph = new mxGraph();
         File graphFile = new File(node.getGraphFile());
+        //ConstantsRepository.OPENDGRAPH.put(graphFile.getAbsolutePath(), graph);
+        ConstantsRepository.CURRENTWORKINGFILE = graphFile.getAbsolutePath();
+        ConstantsRepository.CURRENTWORKINGGRAPH = graph;
         XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(graphFile)));
         //System.out.println(xmlDecoder.readObject().toString());
         Object[] cells = (Object[]) xmlDecoder.readObject();
@@ -76,5 +99,11 @@ public class GraphPopMenu extends JPopupMenu{
         ConstantsRepository.graphComponent.setGridVisible(true);
         ConstantsRepository.graphComponent.setGraph(graph);
         ConstantsRepository.graphComponent.updateUI();
+    }
+    public void saveGraphFile() throws FileNotFoundException{
+        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(new File(node.getGraphFile()))));
+        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
+        xmlEncoder.writeObject(cells);
+        xmlEncoder.close();
     }
 }
