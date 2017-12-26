@@ -13,7 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     EditVertexDialog.java
@@ -53,7 +53,7 @@ public class EditCommandsCellDialog extends JDialog {
                 cell.setValue(text_name.getText().toString());
                 //
                 cell.setCommands(text_commands.getText().toString());
-                ConstantsRepository.graph.refresh();
+                Constants.graph.refresh();
                 dispose();
             }
         });

@@ -28,7 +28,7 @@ import com.mxgraph.util.png.mxPngEncodeParam;
 import com.mxgraph.util.png.mxPngImageEncoder;
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     SaveGraphListener.java
@@ -40,8 +40,8 @@ import jsi.nova.util.ConstantsRepository;
  */
 public class SaveGraphListener implements ActionListener {
 
-    mxGraph graph = ConstantsRepository.graph;
-    mxGraphComponent graphComponent = ConstantsRepository.graphComponent;
+    mxGraph graph = Constants.graph;
+    mxGraphComponent graphComponent = Constants.graphComponent;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -65,7 +65,7 @@ public class SaveGraphListener implements ActionListener {
         param.setCompressedText(new String[] { "mxGraphModel", xml });
         //
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showSaveDialog(ConstantsRepository.mainFrame);
+        jFileChooser.showSaveDialog(Constants.mainFrame);
         File filename = jFileChooser.getSelectedFile();
         FileOutputStream outputStream = new FileOutputStream(filename);
         try {
@@ -84,7 +84,7 @@ public class SaveGraphListener implements ActionListener {
     public void save2(){
         XMLEncoder xmlEncoder = null;
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showSaveDialog(ConstantsRepository.mainFrame);
+        jFileChooser.showSaveDialog(Constants.mainFrame);
         File savefile = jFileChooser.getSelectedFile();
         if (savefile == null)
             return;
@@ -94,7 +94,7 @@ public class SaveGraphListener implements ActionListener {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
+        Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
         xmlEncoder.writeObject(cells);
         xmlEncoder.close();
     }

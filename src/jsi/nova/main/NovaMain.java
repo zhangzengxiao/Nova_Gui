@@ -7,7 +7,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import jsi.nova.gui.frame.MainFrame;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     NovaMain.java
@@ -28,6 +28,6 @@ public class NovaMain {
             e.printStackTrace();
         }
         //
-        ConstantsRepository.mainFrame =  new MainFrame();
+        Constants.mainFrame =  new MainFrame();
     }
 }

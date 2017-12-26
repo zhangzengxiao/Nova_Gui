@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     ProjectPopMenuActions.java
@@ -67,13 +67,13 @@ public class ProjectPopMenuActions {
         fw.write(sb.toString());
         fw.close();
         node.add(graph);
-        ConstantsRepository.projectTree.updateUI();
+        Constants.projectTree.updateUI();
     }
     
     public static void deleteProject(ProjectTreeNode node){
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel().getRoot();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) Constants.projectTree.getModel().getRoot();
         root.remove(node);
-        ConstantsRepository.projectTree.updateUI();
+        Constants.projectTree.updateUI();
      }
 
 }

@@ -11,7 +11,7 @@ import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
 import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     AddNodeListener.java
@@ -32,7 +32,7 @@ public class AddNodeListener implements ActionListener{
         addNode();
     }
     public void addNode(){      
-        mxGraphComponent mg = new ConstantsRepository().graphComponent;
+        mxGraphComponent mg = new Constants().graphComponent;
         graph = mg.getGraph();
         String value = "phase"+cellsCount++;
         // Sets the default edge style

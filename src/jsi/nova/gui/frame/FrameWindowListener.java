@@ -25,7 +25,7 @@ import com.mxgraph.view.mxGraph;
 
 import jsi.nova.gui.projecttree.GraphPopMenuActions;
 import jsi.nova.gui.projecttree.ProjectTreeMouseListener;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     FrameWindowListener.java
@@ -49,8 +49,8 @@ public class FrameWindowListener implements WindowListener {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        ConstantsRepository.mainFrame.getMainSplitPanel().getProjectTreePanel().add(ConstantsRepository.projectTree);
-        ConstantsRepository.mainFrame.getMainSplitPanel().getProjectTreePanel().updateUI();
+        Constants.projectTreePanel.add(Constants.projectTree);
+        Constants.projectTreePanel.updateUI();
     }
 
     /* (non-Javadoc)
@@ -116,17 +116,17 @@ public class FrameWindowListener implements WindowListener {
     public void saveProjectTree() throws FileNotFoundException {
         File treeConfig = new File("./config/ProjectTree.con");
         XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(treeConfig)));
-        ConstantsRepository.projectTree.removeMouseListener(ConstantsRepository.projectTree.getMouseListeners()[0]);
-        ConstantsRepository.projectTree.setSelectionPath(null);
-        xmlEncoder.writeObject(ConstantsRepository.projectTree);
+        Constants.projectTree.removeMouseListener(Constants.projectTree.getMouseListeners()[0]);
+        Constants.projectTree.setSelectionPath(null);
+        xmlEncoder.writeObject(Constants.projectTree);
         xmlEncoder.close();
     }
 
     public void openProjectTree() throws FileNotFoundException {
         File treeConfig = new File("./config/ProjectTree.con");
         XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(treeConfig)));
-        ConstantsRepository.projectTree = (JTree) xmlDecoder.readObject();
-        ConstantsRepository.projectTree.addMouseListener(new ProjectTreeMouseListener());
+        Constants.projectTree = (JTree) xmlDecoder.readObject();
+        Constants.projectTree.addMouseListener(new ProjectTreeMouseListener());
         xmlDecoder.close();
     }
 

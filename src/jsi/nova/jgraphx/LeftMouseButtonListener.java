@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 import com.mxgraph.model.mxCell;
 
 import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     LeftMouseButtonListener.java
@@ -48,17 +48,17 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        mxCell cell = (mxCell) ConstantsRepository.graphComponent.getCellAt(e.getX(), e.getY());
+        mxCell cell = (mxCell) Constants.graphComponent.getCellAt(e.getX(), e.getY());
 
         if (SwingUtilities.isRightMouseButton(e)) {
             if (cell != null) {
                 if (cell instanceof CommandsCell) {
                     cmenu = new CellPopMenu((CommandsCell) cell);
-                    cmenu.show(ConstantsRepository.graphComponent, e.getX(), e.getY());
+                    cmenu.show(Constants.graphComponent, e.getX(), e.getY());
                 }
                 if(cell.isEdge()){
                     cmenu = new CellPopMenu(cell);
-                    cmenu.show(ConstantsRepository.graphComponent, e.getX(), e.getY());
+                    cmenu.show(Constants.graphComponent, e.getX(), e.getY());
                 }
             }
         }

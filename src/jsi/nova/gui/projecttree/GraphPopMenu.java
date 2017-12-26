@@ -19,7 +19,7 @@ import javax.swing.JPopupMenu;
 
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     GraphPopMenu.java

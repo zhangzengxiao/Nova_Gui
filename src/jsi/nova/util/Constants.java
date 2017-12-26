@@ -13,6 +13,10 @@ import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
 import jsi.nova.gui.frame.MainFrame;
+import jsi.nova.gui.panel.GraphAndCellsPanel;
+import jsi.nova.gui.panel.GraphAndMonitorSplitPanel;
+import jsi.nova.gui.panel.MainSplitPanel;
+import jsi.nova.gui.panel.ProjectTreePanel;
 
 /**
  * @ClassName:     ConstantsRepository.java
@@ -22,7 +26,14 @@ import jsi.nova.gui.frame.MainFrame;
  * @Date           2017年12月4日 下午3:53:35 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class ConstantsRepository {
+public class Constants {
+    
+    //split panel
+    public static MainSplitPanel mainSplitPanel;
+    public static GraphAndMonitorSplitPanel graphAndMonitorSplitPanel;
+    public static GraphAndCellsPanel graphAndCellsPanel;
+    public static ProjectTreePanel projectTreePanel;
+    //
     public static mxGraph graph = new mxGraph();
     public static mxGraphComponent graphComponent = new mxGraphComponent(graph);
     public static MainFrame mainFrame =null;

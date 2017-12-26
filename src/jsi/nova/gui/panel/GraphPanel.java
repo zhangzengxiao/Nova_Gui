@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import com.mxgraph.swing.mxGraphComponent;
 
 import jsi.nova.jgraphx.LeftMouseButtonListener;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     GraphPanel.java
@@ -21,7 +21,7 @@ import jsi.nova.util.ConstantsRepository;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphPanel extends JPanel{
-    mxGraphComponent mxGraphComponent = ConstantsRepository.graphComponent;
+    mxGraphComponent mxGraphComponent = Constants.graphComponent;
     public GraphPanel() {
         // TODO Auto-generated constructor stub
         this.setLayout(new GridLayout(1, 1));

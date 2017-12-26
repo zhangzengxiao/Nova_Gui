@@ -22,7 +22,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     GraphPopMenuActions.java
@@ -86,8 +86,8 @@ public class GraphPopMenuActions {
         mxGraph graph = new mxGraph();
         File graphFile = new File(node.getGraphFile());
         //ConstantsRepository.OPENDGRAPH.put(graphFile.getAbsolutePath(), graph);
-        ConstantsRepository.CURRENTWORKINGFILE = graphFile.getAbsolutePath();
-        ConstantsRepository.CURRENTWORKINGGRAPH = graph;
+        Constants.CURRENTWORKINGFILE = graphFile.getAbsolutePath();
+        Constants.CURRENTWORKINGGRAPH = graph;
         XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(graphFile)));
         //System.out.println(xmlDecoder.readObject().toString());
         Object[] cells = (Object[]) xmlDecoder.readObject();
@@ -95,15 +95,15 @@ public class GraphPopMenuActions {
             graph.addCell(cell);
         }
         xmlDecoder.close();
-        ConstantsRepository.graphComponent.setGridVisible(true);
-        ConstantsRepository.graphComponent.setGraph(graph);
-        ConstantsRepository.graphComponent.updateUI();
+        Constants.graphComponent.setGridVisible(true);
+        Constants.graphComponent.setGraph(graph);
+        Constants.graphComponent.updateUI();
     }
 
     public static void saveGraphFile(GraphTreeNode node) throws FileNotFoundException {
         XMLEncoder xmlEncoder = new XMLEncoder(
                 new BufferedOutputStream(new FileOutputStream(new File(node.getGraphFile()))));
-        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
+        Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
         xmlEncoder.writeObject(cells);
         xmlEncoder.close();
     }
@@ -112,7 +112,7 @@ public class GraphPopMenuActions {
         tmp = new File(path + ".tmp");
         tmp.createNewFile();
         XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(tmp)));
-        Object[] cells = ConstantsRepository.graphComponent.getCells(ConstantsRepository.graphComponent.getBounds());
+        Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
         xmlEncoder.writeObject(cells);
         xmlEncoder.close();
         old = new File(path);
@@ -129,8 +129,8 @@ public class GraphPopMenuActions {
     }
 
     public static Boolean ifSaved() throws IOException {
-        if (ConstantsRepository.CURRENTWORKINGFILE != null && ConstantsRepository.CURRENTWORKINGGRAPH != null) {
-            if (graphChanged(ConstantsRepository.CURRENTWORKINGFILE, ConstantsRepository.CURRENTWORKINGGRAPH)) {
+        if (Constants.CURRENTWORKINGFILE != null && Constants.CURRENTWORKINGGRAPH != null) {
+            if (graphChanged(Constants.CURRENTWORKINGFILE, Constants.CURRENTWORKINGGRAPH)) {
                 int result = JOptionPane.showConfirmDialog(null, "是否保存当前工作流");
                 switch (result) {
                 case 0:

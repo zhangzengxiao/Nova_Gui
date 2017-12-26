@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import jsi.nova.gui.projecttree.ProjectTreeNode;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 import jsi.nova.util.GuiUtil;
 
 /**
@@ -122,10 +122,10 @@ public class NewprojectDialog extends JDialog {
                 filedir.mkdirs();
             }
             ptn.setProjectPath(javapath);
-            DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getModel()
+            DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) Constants.projectTree.getModel()
                     .getRoot();
             dmt.add(ptn);
-            ConstantsRepository.projectTree.updateUI();
+            Constants.projectTree.updateUI();
             dispose();
         }
 

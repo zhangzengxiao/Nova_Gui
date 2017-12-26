@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     ProjectTreeMouseListener.java
@@ -30,14 +30,14 @@ public class ProjectTreeMouseListener implements MouseListener{
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
-        DefaultMutableTreeNode dn = (DefaultMutableTreeNode) ConstantsRepository.projectTree.getLastSelectedPathComponent();
+        DefaultMutableTreeNode dn = (DefaultMutableTreeNode) Constants.projectTree.getLastSelectedPathComponent();
         //右键事件
         if(e.getButton()==3){
             if(dn instanceof ProjectTreeNode){
-                new ProjectPopMenu((ProjectTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
+                new ProjectPopMenu((ProjectTreeNode) dn).show(Constants.projectTree, e.getX(), e.getY());;
             }
             else if(dn instanceof GraphTreeNode){
-                new GraphPopMenu((GraphTreeNode) dn).show(ConstantsRepository.projectTree, e.getX(), e.getY());;
+                new GraphPopMenu((GraphTreeNode) dn).show(Constants.projectTree, e.getX(), e.getY());;
             }
         }
         //双击事件

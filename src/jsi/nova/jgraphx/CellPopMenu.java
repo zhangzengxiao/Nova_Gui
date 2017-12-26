@@ -13,7 +13,7 @@ import com.mxgraph.model.mxCell;
 
 import jsi.nova.gui.dialog.EditCommandsCellDialog;
 import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     CellPopMenu.java
@@ -49,7 +49,7 @@ public class CellPopMenu extends JPopupMenu {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method cstub
                 Object[] cells = {cell};
-                ConstantsRepository.graphComponent.getGraph().removeCells(cells);
+                Constants.graphComponent.getGraph().removeCells(cells);
             }
         });
         this.add(edit);

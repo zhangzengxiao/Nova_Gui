@@ -21,7 +21,7 @@ import com.mxgraph.model.mxCell;
 import com.mxgraph.swing.mxGraphComponent;
 
 import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     RunWorkFlowListener.java
@@ -42,7 +42,7 @@ public class RunWorkFlowListener implements ActionListener {
     
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        mxGraphComponent graphComponent = ConstantsRepository.graphComponent;
+        mxGraphComponent graphComponent = Constants.graphComponent;
         edge = new HashMap<String, ArrayList<String>>();
         edge_child = new ArrayList<String>();
 

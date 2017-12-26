@@ -24,7 +24,7 @@ import com.mxgraph.util.mxXmlUtils;
 import com.mxgraph.util.png.mxPngTextDecoder;
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     OpenGraphListener.java
@@ -35,8 +35,8 @@ import jsi.nova.util.ConstantsRepository;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class OpenGraphListener implements ActionListener {
-    mxGraph graph = ConstantsRepository.graph;
-    mxGraphComponent graphComponent = ConstantsRepository.graphComponent;
+    mxGraph graph = Constants.graph;
+    mxGraphComponent graphComponent = Constants.graphComponent;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -45,7 +45,7 @@ public class OpenGraphListener implements ActionListener {
 
     public void openGraph() throws FileNotFoundException, UnsupportedEncodingException {
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showOpenDialog(ConstantsRepository.mainFrame);
+        jFileChooser.showOpenDialog(Constants.mainFrame);
         File file = jFileChooser.getSelectedFile();
         Map<String, String> text = mxPngTextDecoder.decodeCompressedText(new FileInputStream(file));
 
@@ -64,7 +64,7 @@ public class OpenGraphListener implements ActionListener {
     public void open2() {
         XMLDecoder xmlDecoder = null;
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showOpenDialog(ConstantsRepository.mainFrame);
+        jFileChooser.showOpenDialog(Constants.mainFrame);
         File openfile = jFileChooser.getSelectedFile();
         if (openfile == null)
             return;

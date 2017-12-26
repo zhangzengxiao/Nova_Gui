@@ -6,7 +6,7 @@ package jsi.nova.gui.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import jsi.nova.util.ConstantsRepository;
+import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     ZoomInListener.java
@@ -24,7 +24,7 @@ public class ZoomInListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        ConstantsRepository.graphComponent.zoomIn();
+        Constants.graphComponent.zoomIn();
     }
 
 }

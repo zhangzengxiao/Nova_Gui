@@ -5,6 +5,8 @@ package jsi.nova.gui.panel;
 
 import javax.swing.JSplitPane;
 
+import jsi.nova.util.Constants;
+
 /**
  * @ClassName:     GraphAndMonitorSplitPanel.java
  * @Description:   TODO(用一句话描述该文件做什么) 
@@ -14,15 +16,16 @@ import javax.swing.JSplitPane;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphAndMonitorSplitPanel extends JSplitPane{
-    private GraphPanel graphPanel = null;
-    private MonitorPanel monitorPanel = null;
+
+    private MonitorPanel monitorPanel;
+    
     public GraphAndMonitorSplitPanel(int newOrientation) {
         // TODO Auto-generated constructor stub
         super(newOrientation);
-        graphPanel = new GraphPanel();
+        Constants.graphAndCellsPanel = new GraphAndCellsPanel(JSplitPane.HORIZONTAL_SPLIT);
         monitorPanel = new MonitorPanel();
         //
-        this.setLeftComponent(graphPanel);
+        this.setLeftComponent(Constants.graphAndCellsPanel);
         this.setRightComponent(monitorPanel);
     }
 
