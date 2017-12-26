@@ -95,6 +95,7 @@ public class GraphPopMenuActions {
             graph.addCell(cell);
         }
         xmlDecoder.close();
+        Constants.graphComponent.setVisible(true);
         Constants.graphComponent.setGridVisible(true);
         Constants.graphComponent.setGraph(graph);
         Constants.graphComponent.updateUI();

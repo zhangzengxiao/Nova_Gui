@@ -26,6 +26,7 @@ public class GraphPanel extends JPanel{
         // TODO Auto-generated constructor stub
         this.setLayout(new GridLayout(1, 1));
         mxGraphComponent.getGraphControl().addMouseListener(new LeftMouseButtonListener());
+        mxGraphComponent.setVisible(false);
         this.add(mxGraphComponent);
     }
 }

@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.TransferHandler;
 
 import com.mxgraph.model.mxCell;
@@ -31,6 +32,7 @@ import com.mxgraph.util.mxEventObject;
 import com.mxgraph.util.mxEventSource;
 import com.mxgraph.util.mxRectangle;
 
+import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.jgraphx.ShadowBorder;
 
 
@@ -43,15 +45,19 @@ import jsi.nova.jgraphx.ShadowBorder;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class CellsPanel extends JPanel {
+    
     protected JLabel selectedEntry = null;
     protected mxEventSource eventSource = new mxEventSource(this);
 
     public CellsPanel() {
         // TODO Auto-generated constructor stub
-        this.addTemplate("test", new ImageIcon("/img/server.png"), "image;image=/img/server.png", 30, 30, "test");
-        //this.add(new JLabel(new ImageIcon("./img/server.png")));
-        //setBackground(new Color(149, 230, 190));
-        //setBackground(new Color(0, 0, 0));
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        this.add(scrollPane);
+        
+        this.addCommandsCell("Commands", new ImageIcon("/img/server.png"), "image;image=/img/server.png", 80, 50, "");
+
         setLayout(new FlowLayout(FlowLayout.LEADING, 5, 5));
 
         // Clears the current selection when the background is clicked
@@ -95,6 +101,11 @@ public class CellsPanel extends JPanel {
         mxCell cell = new mxCell(value, new mxGeometry(0, 0, width, height), style);
         cell.setVertex(true);
 
+        addTemplate(name, icon, cell);
+    }
+    public void addCommandsCell(final String name, ImageIcon icon, String style, int width, int height, Object value) {
+        CommandsCell cell = new CommandsCell(value, new mxGeometry(0, 0, width, height), style);
+        cell.setVertex(true);
         addTemplate(name, icon, cell);
     }
 

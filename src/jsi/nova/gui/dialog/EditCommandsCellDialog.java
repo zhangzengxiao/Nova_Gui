@@ -53,7 +53,7 @@ public class EditCommandsCellDialog extends JDialog {
                 cell.setValue(text_name.getText().toString());
                 //
                 cell.setCommands(text_commands.getText().toString());
-                Constants.graph.refresh();
+                Constants.CURRENTWORKINGGRAPH.refresh();
                 dispose();
             }
         });

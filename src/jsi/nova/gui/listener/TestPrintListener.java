@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.Constants;
 
 /**
@@ -26,8 +27,8 @@ public class TestPrintListener implements ActionListener{
         // TODO Auto-generated method stub
         mxGraph graph = Constants.graph;
         mxGraphComponent mg = Constants.graphComponent;
-        System.out.println("test");
-//        for(Object cell : mg.getCells(mg.getBounds())){
+        for(Object cell : mg.getCells(mg.getBounds())){
+            System.out.println(cell);
 //            if(cell instanceof CommandsCell){
 //                //System.out.println(cell);
 //            }
@@ -36,7 +37,7 @@ public class TestPrintListener implements ActionListener{
 //                System.out.println(c.getSource());
 //                System.out.println(c.getTarget());
 //            }
-//        }
+        }
         
     }
 

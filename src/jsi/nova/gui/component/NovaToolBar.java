@@ -61,11 +61,11 @@ public class NovaToolBar extends JToolBar {
         zoomout.addActionListener(new ZoomOutListener());
         testButton.addActionListener(new TestPrintListener());
         //
-        this.add(runWorkflow);
-        this.add(saveGraph);
-        this.add(openGraph);
-        this.add(addNode);
-        this.add(addEdge);
+//        this.add(runWorkflow);
+//        this.add(saveGraph);
+//        this.add(openGraph);
+//        this.add(addNode);
+//        this.add(addEdge);
         this.add(zoomin);
         this.add(zoomout);
         this.add(testButton);
