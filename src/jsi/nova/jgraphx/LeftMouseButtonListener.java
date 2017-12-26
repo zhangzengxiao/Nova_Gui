@@ -43,8 +43,8 @@ public class LeftMouseButtonListener implements MouseListener {
 
         if (SwingUtilities.isRightMouseButton(e)) {
             if (cell != null) {
-                if (cell instanceof CommandsCell) {
-                    cmenu = new CellPopMenu((CommandsCell) cell);
+                if (cell.isVertex()) {
+                    cmenu = new CellPopMenu(cell);
                     cmenu.show(Constants.graphComponent, e.getX(), e.getY());
                 }
                 if(cell.isEdge()){

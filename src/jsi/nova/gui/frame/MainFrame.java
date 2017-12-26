@@ -5,6 +5,7 @@ package jsi.nova.gui.frame;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -43,7 +44,7 @@ public class MainFrame extends JFrame{
         this.setVisible(true);
         Constants.graphAndCellsPanel.setDividerLocation(0.8);
         Constants.graphAndMonitorSplitPanel.setDividerLocation(0.8);
-        Constants.mainSplitPanel.setDividerLocation(0.12);
+        Constants.mainSplitPanel.setDividerLocation(0.11);
         this.setLocationRelativeTo(null);
     }
     

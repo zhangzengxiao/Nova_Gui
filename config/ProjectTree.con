@@ -6,46 +6,16 @@
     <void property="userObject">
      <string>项目总览</string>
     </void>
-    <void method="add">
-     <object class="jsi.nova.gui.projecttree.ProjectTreeNode">
-      <void method="add">
-       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
-      </void>
-      <void method="add">
-       <object class="jsi.nova.gui.projecttree.GraphTreeNode">
-        <void property="graphFile">
-         <string>C:\Users\57853\Documents\222\graph.jg</string>
-        </void>
-        <void property="userObject">
-         <string>graph</string>
-        </void>
-       </object>
-      </void>
-      <void property="projectPath">
-       <string>C:/Users/57853/Documents/222</string>
-      </void>
-      <void property="userObject">
-       <string>222</string>
-      </void>
-     </object>
-    </void>
    </object>
   </object>
-  <void id="DefaultTreeCellRenderer0" property="cellRenderer">
-   <void property="foreground">
-    <object class="javax.swing.plaf.ColorUIResource">
-     <int>3</int>
-     <int>3</int>
-     <int>3</int>
-    </object>
-   </void>
+  <void property="cellRenderer">
    <void property="location">
     <object class="java.awt.Point" id="Point0">
      <void class="java.awt.Point" method="getField">
       <string>x</string>
       <void method="set">
        <object idref="Point0"/>
-       <int>-55</int>
+       <int>-71</int>
       </void>
      </void>
      <void class="java.awt.Point" method="getField">
@@ -56,13 +26,6 @@
       </void>
      </void>
     </object>
-   </void>
-   <void id="ImageIcon0" property="closedIcon"/>
-   <void property="leafIcon">
-    <object idref="ImageIcon0"/>
-   </void>
-   <void property="text">
-    <string>graph</string>
    </void>
   </void>
   <void id="DefaultTreeSelectionModel0" property="selectionModel">

@@ -33,6 +33,7 @@ import com.mxgraph.util.mxEventSource;
 import com.mxgraph.util.mxRectangle;
 
 import jsi.nova.jgraphx.CommandsCell;
+import jsi.nova.jgraphx.InnerGraphCell;
 import jsi.nova.jgraphx.ShadowBorder;
 
 
@@ -56,7 +57,8 @@ public class CellsPanel extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         this.add(scrollPane);
         
-        this.addCommandsCell("Commands", new ImageIcon("/img/server.png"), "image;image=/img/server.png", 80, 50, "");
+        this.addCommandsCell("Commands", new ImageIcon("./img/rounded.png"), "image;image=/img/server.png", 80, 50, "");
+        this.addInnerGraphCell("InnerGraph", new ImageIcon("./img/triangle.png"), "image;image=/img/server.png", 80, 50, "");
 
         setLayout(new FlowLayout(FlowLayout.LEADING, 5, 5));
 
@@ -97,14 +99,19 @@ public class CellsPanel extends JPanel {
         });
     }
 
-    public void addTemplate(final String name, ImageIcon icon, String style, int width, int height, Object value) {
-        mxCell cell = new mxCell(value, new mxGeometry(0, 0, width, height), style);
-        cell.setVertex(true);
-
-        addTemplate(name, icon, cell);
-    }
+//    public void addTemplate(final String name, ImageIcon icon, String style, int width, int height, Object value) {
+//        mxCell cell = new mxCell(value, new mxGeometry(0, 0, width, height), style);
+//        cell.setVertex(true);
+//
+//        addTemplate(name, icon, cell);
+//    }
     public void addCommandsCell(final String name, ImageIcon icon, String style, int width, int height, Object value) {
         CommandsCell cell = new CommandsCell(value, new mxGeometry(0, 0, width, height), style);
+        cell.setVertex(true);
+        addTemplate(name, icon, cell);
+    }
+    public void addInnerGraphCell(final String name, ImageIcon icon, String style, int width, int height, Object value) {
+        InnerGraphCell cell = new InnerGraphCell(value, new mxGeometry(0, 0, width, height), style);
         cell.setVertex(true);
         addTemplate(name, icon, cell);
     }

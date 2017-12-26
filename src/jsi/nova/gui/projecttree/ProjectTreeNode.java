@@ -19,6 +19,7 @@ public class ProjectTreeNode extends DefaultMutableTreeNode{
      * 
      */
     private String projectPath = null;
+    private int graphNumber = 1;
     public ProjectTreeNode() {
         super();
         // TODO Auto-generated constructor stub
@@ -48,6 +49,14 @@ public class ProjectTreeNode extends DefaultMutableTreeNode{
 
     public void setProjectPath(String projectPath) {
         this.projectPath = projectPath;
+    }
+
+    public int getGraphNumber() {
+        return graphNumber;
+    }
+
+    public void setGraphNumber(int graphNumber) {
+        this.graphNumber = graphNumber;
     }
     
 

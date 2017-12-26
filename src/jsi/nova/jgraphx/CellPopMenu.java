@@ -38,6 +38,9 @@ public class CellPopMenu extends JPopupMenu {
                 if (cell instanceof CommandsCell) {
                     new EditCommandsCellDialog((CommandsCell) cell);
                 }
+                if (cell instanceof InnerGraphCell){
+                    
+                }
                 else if(cell.isEdge()){
                    
                 }

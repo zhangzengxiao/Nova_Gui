@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import jsi.nova.util.Constants;
@@ -22,7 +23,7 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class ProjectPopMenuActions {
-    
+
     public static class addGraphListener implements ActionListener {
         private ProjectTreeNode node;
 
@@ -38,23 +39,25 @@ public class ProjectPopMenuActions {
             }
         }
     }
-    
+
     public static class deleteProjectListener implements ActionListener {
         private ProjectTreeNode node;
-       
+
         public deleteProjectListener(ProjectTreeNode node) {
             this.node = node;
         }
+
         public void actionPerformed(ActionEvent e) {
             deleteProject(node);
         }
     }
-    
+
     public static void addGraphTreeNode(ProjectTreeNode node) throws IOException {
-        GraphTreeNode graph = new GraphTreeNode("graph");
+        GraphTreeNode graphnode = new GraphTreeNode("graph" + node.getGraphNumber());
         String path = node.getProjectPath();
-        File graphFile = new File(path, "graph.jg");
-        graph.setGraphFile(graphFile.getAbsolutePath());
+        File graphFile = new File(path, "graph" + node.getGraphNumber() + ".jg");
+        node.setGraphNumber(node.getGraphNumber() + 1);
+        graphnode.setGraphFile(graphFile.getAbsolutePath());
         try {
             graphFile.createNewFile();
         } catch (IOException e) {
@@ -67,14 +70,22 @@ public class ProjectPopMenuActions {
         sb.append("</java>\n");
         fw.write(sb.toString());
         fw.close();
-        node.add(graph);
+        node.add(graphnode);
         Constants.projectTree.updateUI();
     }
-    
-    public static void deleteProject(ProjectTreeNode node){
-        DefaultMutableTreeNode root = (DefaultMutableTreeNode) Constants.projectTree.getModel().getRoot();
-        root.remove(node);
-        Constants.projectTree.updateUI();
-     }
+
+    public static void deleteProject(ProjectTreeNode node) {
+        int resutlt = JOptionPane.showConfirmDialog(null, "确定删除该项目?");
+        switch (resutlt) {
+        case 0:
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode) Constants.projectTree.getModel().getRoot();
+            root.remove(node);
+            Constants.projectTree.updateUI();            
+            break;
+        default:
+            break;
+
+        }
+    }
 
 }
