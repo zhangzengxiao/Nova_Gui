@@ -24,12 +24,12 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class EditCommandsCellDialog extends JDialog {
-    private JButton button1 = null;
-    private JButton button2 =null;
-    private JLabel label_name = null;
-    private JTextField text_name = null;
-    private JLabel label_commands = null;
-    private JTextArea text_commands = null;
+    private JButton button1;
+    private JButton button2;
+    private JLabel label_name;
+    private JTextField text_name;
+    private JLabel label_commands;
+    private JTextArea text_commands;
     
     public EditCommandsCellDialog(CommandsCell cell) {
         // TODO Auto-generated constructor stub

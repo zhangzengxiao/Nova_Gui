@@ -24,37 +24,16 @@ import jsi.nova.util.Constants;
  */
 public class CellPopMenu extends JPopupMenu {
     JMenuItem edit;
-    JMenuItem delete;
+    JMenuItem remove;
     public CellPopMenu(mxCell cell) {
         // TODO Auto-generated constructor stub
         edit = new JMenuItem("±à¼­");
-        delete = new JMenuItem("É¾³ý");
-        edit.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                if (cell instanceof CommandsCell) {
-                    new EditCommandsCellDialog((CommandsCell) cell);
-                }
-                if (cell instanceof InnerGraphCell){
-                    
-                }
-                else if(cell.isEdge()){
-                   
-                }
-            }
-        });
-        delete.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method cstub
-                Object[] cells = {cell};
-                Constants.graphComponent.getGraph().removeCells(cells);
-            }
-        });
+        remove = new JMenuItem("É¾³ý");
+        //
+        edit.addActionListener(new CellPopMenuActions.EditCellListener(cell));
+        remove.addActionListener(new CellPopMenuActions.RemoveCellListener(cell));
+        //
         this.add(edit);
-        this.add(delete);
+        this.add(remove);
     }
 }
