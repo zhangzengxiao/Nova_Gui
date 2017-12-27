@@ -49,8 +49,8 @@ public class GraphPopMenu extends JPopupMenu{
         //
         this.add(openGraph);
         this.addSeparator();
-        this.add(saveGraph);
-        this.addSeparator();
+//        this.add(saveGraph);
+//        this.addSeparator();
         this.add(runGraph);
         this.addSeparator();
         this.add(deleteGraph);

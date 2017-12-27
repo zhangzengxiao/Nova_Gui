@@ -59,6 +59,14 @@ public class EditCommandsCellDialog extends JDialog {
         });
         button2 = new JButton("È¡Ïû");
         button2.setBounds(556, 387, 79, 23);
+        button2.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                dispose();
+            }
+        });
         //
         this.add(label_name);
         this.add(text_name);

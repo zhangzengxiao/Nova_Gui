@@ -39,7 +39,7 @@ public class NovaToolBar extends JToolBar {
         runWorkflow = new JButton();
         GuiUtil.setImageIcon(runWorkflow, "video_play_64.png", "运行工作流");
         saveGraph = new JButton();
-        GuiUtil.setImageIcon(saveGraph, "inbox_64.png", "保存图片");
+        GuiUtil.setImageIcon(saveGraph, "save.gif", "保存当前工作流");
         openGraph = new JButton();
         GuiUtil.setImageIcon(openGraph, "outbox_64.png", "打开图片");
         addNode = new JButton();
@@ -62,7 +62,7 @@ public class NovaToolBar extends JToolBar {
         testButton.addActionListener(new TestPrintListener());
         //
 //        this.add(runWorkflow);
-//        this.add(saveGraph);
+        this.add(saveGraph);
 //        this.add(openGraph);
 //        this.add(addNode);
 //        this.add(addEdge);

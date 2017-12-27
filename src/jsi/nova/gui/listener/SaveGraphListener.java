@@ -28,6 +28,7 @@ import com.mxgraph.util.png.mxPngEncodeParam;
 import com.mxgraph.util.png.mxPngImageEncoder;
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.gui.projecttree.GraphPopMenuActions;
 import jsi.nova.util.Constants;
 
 /**
@@ -45,7 +46,12 @@ public class SaveGraphListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        save2();
+        try {
+            GraphPopMenuActions.saveGraphFile();
+        } catch (FileNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
     }
 
     public void saveGraph() throws IOException {

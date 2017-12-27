@@ -73,7 +73,7 @@ public class GraphPopMenuActions {
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
             try {
-                saveGraphFile(node);
+                saveGraphFile();
             } catch (FileNotFoundException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
@@ -101,14 +101,18 @@ public class GraphPopMenuActions {
         Constants.graphComponent.updateUI();
     }
 
-    public static void saveGraphFile(GraphTreeNode node) throws FileNotFoundException {
-        XMLEncoder xmlEncoder = new XMLEncoder(
-                new BufferedOutputStream(new FileOutputStream(new File(node.getGraphFile()))));
-        Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
-        xmlEncoder.writeObject(cells);
-        xmlEncoder.close();
+    public static void saveGraphFile() throws FileNotFoundException {
+        if (Constants.CURRENTWORKINGGRAPH != null && Constants.CURRENTWORKINGFILE != null) {
+            XMLEncoder xmlEncoder = new XMLEncoder(
+                    new BufferedOutputStream(new FileOutputStream(new File(Constants.CURRENTWORKINGFILE))));
+            Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
+            xmlEncoder.writeObject(cells);
+            xmlEncoder.close();
+            JOptionPane.showMessageDialog(null, "保存成功");
+        }
     }
 
+    //判断是否修改过
     public static Boolean graphChanged(String path, mxGraph graph) throws IOException {
         tmp = new File(path + ".tmp");
         tmp.createNewFile();
@@ -129,6 +133,7 @@ public class GraphPopMenuActions {
         return (!oldFileMD5.equals(tmpFileMD5));
     }
 
+    // 得到是否保存
     public static Boolean ifSaved() throws IOException {
         if (Constants.CURRENTWORKINGFILE != null && Constants.CURRENTWORKINGGRAPH != null) {
             if (graphChanged(Constants.CURRENTWORKINGFILE, Constants.CURRENTWORKINGGRAPH)) {
