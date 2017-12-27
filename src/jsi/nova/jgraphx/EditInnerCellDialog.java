@@ -31,9 +31,12 @@ public class EditInnerCellDialog extends JDialog {
     private JButton confirm;
     private JButton cancel;
     private File Currentpath;
+    private InnerGraphCell cell;
 
     public EditInnerCellDialog(InnerGraphCell cell) {
         // TODO Auto-generated constructor stub
+        this.cell = cell;
+        //
         label_name = new JLabel("name:");
         label_name.setBounds(40, 52, 54, 15);
         label_graph = new JLabel("graph:");
@@ -55,29 +58,8 @@ public class EditInnerCellDialog extends JDialog {
             }
         }
         //
-        confirm.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                cell.setValue(text_name.getText().toString());
-                //
-                if (select_graph.getSelectedItem() != null) {
-                    cell.setInnerGraph(
-                            Currentpath.getParent() + "\\" + select_graph.getSelectedItem().toString() + ".jg");
-                }
-                Constants.CURRENTWORKINGGRAPH.refresh();
-                dispose();
-            }
-        });
-        cancel.addActionListener(new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                dispose();
-            }
-        });
+        confirm.addActionListener(new CondfirmListener());
+        cancel.addActionListener(new CancelListener());
         //
         //
         this.add(label_name);
@@ -95,4 +77,26 @@ public class EditInnerCellDialog extends JDialog {
         this.setVisible(true);
     }
 
+    public class CondfirmListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            cell.setValue(text_name.getText().toString());
+            //
+            if (select_graph.getSelectedItem() != null) {
+                cell.setInnerGraph(Currentpath.getParent() + "\\" + select_graph.getSelectedItem().toString() + ".jg");
+            }
+            Constants.CURRENTWORKINGGRAPH.refresh();
+            dispose();
+        }
+
+    }
+
+    public class CancelListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            dispose();
+         }
+    }
 }
