@@ -7,16 +7,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DragGestureEvent;
 import java.awt.dnd.DragGestureListener;
 import java.awt.dnd.DragSource;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -49,18 +53,35 @@ public class CellsPanel extends JPanel {
     
     protected JLabel selectedEntry = null;
     protected mxEventSource eventSource = new mxEventSource(this);
+    private JScrollPane scrollPane;
+    private JPanel innerPanel;
 
     public CellsPanel() {
         // TODO Auto-generated constructor stub
-        JScrollPane scrollPane = new JScrollPane();
+        this.setLayout(new GridLayout(1, 1));
+        innerPanel = new JPanel();
+        innerPanel.setLayout(new FlowLayout());
+        scrollPane = new JScrollPane(innerPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        this.add(scrollPane);
-        
         this.addCommandsCell("Commands", new ImageIcon("./img/rounded.png"), "image;image=/img/server.png", 80, 50, "");
         this.addInnerGraphCell("InnerGraph", new ImageIcon("./img/triangle.png"), "image;image=/img/server.png", 80, 50, "");
+        this.add(scrollPane);
+        this.addComponentListener(new ComponentAdapter()
+        {
+                /**
+                 * 
+                 */
+                public void componentResized(ComponentEvent e)
+                {
+                        int w = scrollPane.getWidth()
+                                        - scrollPane.getVerticalScrollBar().getWidth();
+                        int cols = Math.max(1, w / 55);
+                        innerPanel.setPreferredSize(new Dimension(w,(getComponentCount() * 55 / cols) + 30));
+                        innerPanel.revalidate();
+                }
 
-        setLayout(new FlowLayout(FlowLayout.LEADING, 5, 5));
+        });
 
         // Clears the current selection when the background is clicked
         addMouseListener(new MouseListener()
@@ -172,7 +193,7 @@ public class CellsPanel extends JPanel {
         DragSource dragSource = new DragSource();
         dragSource.createDefaultDragGestureRecognizer(entry, DnDConstants.ACTION_COPY, dragGestureListener);
 
-        add(entry);
+        innerPanel.add(entry);
     }
 
     public void setSelectionEntry(JLabel entry, mxGraphTransferable t) {
