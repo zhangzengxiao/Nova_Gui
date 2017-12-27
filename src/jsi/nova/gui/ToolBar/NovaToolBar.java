@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.component;
+package jsi.nova.gui.ToolBar;
 
 import javax.swing.JButton;
 import javax.swing.JToolBar;
@@ -10,9 +10,6 @@ import jsi.nova.gui.listener.AddNodeListener;
 import jsi.nova.gui.listener.OpenGraphListener;
 import jsi.nova.gui.listener.RunWorkFlowListener;
 import jsi.nova.gui.listener.SaveGraphListener;
-import jsi.nova.gui.listener.TestPrintListener;
-import jsi.nova.gui.listener.ZoomInListener;
-import jsi.nova.gui.listener.ZoomOutListener;
 import jsi.nova.util.GuiUtil;
 
 /**

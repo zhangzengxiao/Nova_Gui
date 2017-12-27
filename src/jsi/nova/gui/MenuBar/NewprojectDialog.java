@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.dialog;
+package jsi.nova.gui.MenuBar;
 
 import java.awt.TextField;
 import java.awt.event.ActionEvent;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package jsi.nova.gui.dialog;
+package jsi.nova.jgraphx;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

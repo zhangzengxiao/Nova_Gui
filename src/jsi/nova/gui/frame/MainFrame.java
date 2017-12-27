@@ -10,8 +10,8 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import jsi.nova.gui.component.NovaToolBar;
-import jsi.nova.gui.component.TopMenuBar;
+import jsi.nova.gui.MenuBar.TopMenuBar;
+import jsi.nova.gui.ToolBar.NovaToolBar;
 import jsi.nova.gui.panel.MainSplitPanel;
 import jsi.nova.gui.projecttree.GraphPopMenuActions;
 import jsi.nova.util.Constants;

@@ -11,7 +11,6 @@ import javax.swing.JPopupMenu;
 
 import com.mxgraph.model.mxCell;
 
-import jsi.nova.gui.dialog.EditCommandsCellDialog;
 import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.Constants;
 

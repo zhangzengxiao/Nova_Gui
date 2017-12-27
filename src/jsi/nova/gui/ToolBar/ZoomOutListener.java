@@ -1,20 +1,22 @@
 /**
  * 
  */
-package jsi.nova.gui.listener;
+package jsi.nova.gui.ToolBar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import jsi.nova.util.Constants;
+
 /**
- * @ClassName:     NewProjectListener.java
+ * @ClassName:     ZoomOutListener.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         zhangzengxiao
+ * @author         zoom out the graph
  * @version        V1.0  
- * @Date           2017年12月7日 下午4:22:16 
+ * @Date           2017年12月7日 下午2:50:48 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class NewProjectListener implements ActionListener{
+public class ZoomOutListener implements ActionListener{
 
     /* (non-Javadoc)
      * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -22,7 +24,7 @@ public class NewProjectListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+        Constants.graphComponent.zoomOut();
     }
 
 }
