@@ -15,6 +15,7 @@ import com.mxgraph.model.mxGeometry;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class CommandsCell extends mxCell {
+    
     private String commands = null;
 
     public CommandsCell() {

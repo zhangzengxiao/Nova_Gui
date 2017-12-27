@@ -17,7 +17,7 @@ import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     EditInnerCellDialog.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   EditInnerCellDialog
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月27日 下午12:59:36 
@@ -49,7 +49,7 @@ public class EditInnerCellDialog extends JDialog {
         confirm.setBounds(154, 200, 93, 23);
         cancel = new JButton("取消");
         cancel.setBounds(267, 200, 93, 23);
-        //
+        //给下拉框赋值
         Currentpath = new File(Constants.CURRENTWORKINGFILE);
         File files[] = new File(Currentpath.getParent()).listFiles();
         for (File a : files) {

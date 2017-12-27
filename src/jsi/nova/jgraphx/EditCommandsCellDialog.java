@@ -17,7 +17,7 @@ import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     EditVertexDialog.java
- * @Description:   Edit CommandsCEll dailog
+ * @Description:   Edit CommandsCEll dialog
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月5日 下午4:31:11 

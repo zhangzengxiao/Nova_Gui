@@ -9,7 +9,7 @@ import com.mxgraph.model.mxGeometry;
 /**
  * @ClassName:     InnerGraphCell.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         zhangzengxiao
+ * @author         InnerGraphCell extends mxCell
  * @version        V1.0  
  * @Date           2017年12月26日 下午3:33:59 
  * @Place          北京航空航天大学中德软件联合研究所

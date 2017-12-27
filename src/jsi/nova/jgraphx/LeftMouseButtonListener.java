@@ -40,17 +40,10 @@ public class LeftMouseButtonListener implements MouseListener {
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
         mxCell cell = (mxCell) Constants.graphComponent.getCellAt(e.getX(), e.getY());
-
         if (SwingUtilities.isRightMouseButton(e)) {
             if (cell != null) {
-                if (cell.isVertex()) {
-                    cmenu = new CellPopMenu(cell);
-                    cmenu.show(Constants.graphComponent, e.getX(), e.getY());
-                }
-                if(cell.isEdge()){
-                    cmenu = new CellPopMenu(cell);
-                    cmenu.show(Constants.graphComponent, e.getX(), e.getY());
-                }
+                cmenu = new CellPopMenu(cell);
+                cmenu.show(Constants.graphComponent, e.getX(), e.getY());
             }
         }
     }
