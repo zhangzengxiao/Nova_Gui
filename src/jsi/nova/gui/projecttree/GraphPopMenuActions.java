@@ -154,6 +154,9 @@ public class GraphPopMenuActions {
                     break;
                 }
             }
+            if(tmp.exists()){
+                tmp.delete();
+            }
         }
         return true;
     }
