@@ -5,7 +5,6 @@ package jsi.nova.gui.frame;
 
 import java.awt.BorderLayout;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowStateListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;

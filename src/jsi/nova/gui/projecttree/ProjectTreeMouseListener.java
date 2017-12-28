@@ -5,7 +5,6 @@ package jsi.nova.gui.projecttree;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 

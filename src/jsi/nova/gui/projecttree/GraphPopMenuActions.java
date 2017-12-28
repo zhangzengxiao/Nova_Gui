@@ -91,6 +91,12 @@ public class GraphPopMenuActions {
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
+            try {
+                saveGraphFile();
+            } catch (FileNotFoundException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             RunWorkFlow.run(node);
             editMonitorArea();
         }

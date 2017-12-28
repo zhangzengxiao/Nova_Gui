@@ -10,7 +10,6 @@ import javax.swing.SwingUtilities;
 
 import com.mxgraph.model.mxCell;
 
-import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.Constants;
 
 /**

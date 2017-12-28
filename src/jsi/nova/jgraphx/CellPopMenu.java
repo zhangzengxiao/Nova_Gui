@@ -3,16 +3,10 @@
  */
 package jsi.nova.jgraphx;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import com.mxgraph.model.mxCell;
-
-import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     CellPopMenu.java

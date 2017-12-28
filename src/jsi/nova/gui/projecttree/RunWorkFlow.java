@@ -3,8 +3,6 @@
  */
 package jsi.nova.gui.projecttree;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -19,13 +17,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.python.util.PythonInterpreter;
-
 import com.mxgraph.model.mxCell;
-import com.mxgraph.swing.mxGraphComponent;
 
 import jsi.nova.jgraphx.CommandsCell;
-import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     RunWorkFlowListener.java
@@ -59,7 +53,6 @@ public class RunWorkFlow{
         }
         //System.out.println(xmlDecoder.readObject().toString());
 
-        mxGraphComponent graphComponent = Constants.graphComponent;
         edge = new HashMap<String, ArrayList<String>>();
         edge_child = new ArrayList<String>();
 

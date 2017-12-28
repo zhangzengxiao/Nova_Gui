@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.Constants;
 
 /**

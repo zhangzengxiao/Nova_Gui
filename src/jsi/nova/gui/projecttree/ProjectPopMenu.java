@@ -3,17 +3,8 @@
  */
 package jsi.nova.gui.projecttree;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     ProjectPopMenu.java

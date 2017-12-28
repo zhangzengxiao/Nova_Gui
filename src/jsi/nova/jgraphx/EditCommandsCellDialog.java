@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import jsi.nova.jgraphx.CommandsCell;
 import jsi.nova.util.Constants;
 
 /**
