@@ -43,7 +43,7 @@ public class TopMenuBar extends JMenuBar{
         help = new JMenu("°ïÖú");
         //
         this.add(file);
-        this.add(run);
+        //this.add(run);
         this.add(help);
     }
 }
