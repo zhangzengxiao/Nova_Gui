@@ -45,20 +45,13 @@
    </object>
   </object>
   <void id="DefaultTreeCellRenderer0" property="cellRenderer">
-   <void property="foreground">
-    <object class="javax.swing.plaf.ColorUIResource">
-     <int>3</int>
-     <int>3</int>
-     <int>3</int>
-    </object>
-   </void>
    <void property="location">
     <object class="java.awt.Point" id="Point0">
      <void class="java.awt.Point" method="getField">
       <string>x</string>
       <void method="set">
        <object idref="Point0"/>
-       <int>-62</int>
+       <int>-44</int>
       </void>
      </void>
      <void class="java.awt.Point" method="getField">
@@ -76,9 +69,6 @@
    </void>
    <void property="openIcon">
     <object idref="ImageIcon0"/>
-   </void>
-   <void property="text">
-    <string>graph1</string>
    </void>
   </void>
   <void id="DefaultTreeSelectionModel0" property="selectionModel">

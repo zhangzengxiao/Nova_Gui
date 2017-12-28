@@ -13,7 +13,7 @@ import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     ProjectTreeMouseListener.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   监听tree的鼠标事件
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月8日 下午2:45:39 

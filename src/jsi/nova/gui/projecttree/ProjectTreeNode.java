@@ -8,7 +8,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 /**
  * @ClassName:     ProjectTreeNode.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         zhangzengxiao
+ * @author         表示project的Treenode
  * @version        V1.0  
  * @Date           2017年12月8日 下午1:45:32 
  * @Place          北京航空航天大学中德软件联合研究所

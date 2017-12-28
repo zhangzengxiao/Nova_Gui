@@ -16,7 +16,7 @@ import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     ProjectPopMenuActions.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   右键project弹出的菜单所对应的各种操作
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月13日 下午7:58:06 
@@ -51,9 +51,11 @@ public class ProjectPopMenuActions {
             deleteProject(node);
         }
     }
-
+    //新建一个GraphTreeNode和其对应的文件
     public static void addGraphTreeNode(ProjectTreeNode node) throws IOException {
+        //新建GraphTreeNode
         GraphTreeNode graphnode = new GraphTreeNode("graph" + node.getGraphNumber());
+        //设置GraphTreeNode对应的文件名并新建文件
         String path = node.getProjectPath();
         File graphFile = new File(path, "graph" + node.getGraphNumber() + ".jg");
         node.setGraphNumber(node.getGraphNumber() + 1);
@@ -63,6 +65,7 @@ public class ProjectPopMenuActions {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //给文件写入内容，新建一张空白图
         FileWriter fw = new FileWriter(graphFile);
         StringBuilder sb = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
         sb.append("<java version=\"1.8.0_144\" class=\"java.beans.XMLDecoder\">\n");
@@ -71,9 +74,10 @@ public class ProjectPopMenuActions {
         fw.write(sb.toString());
         fw.close();
         node.add(graphnode);
+        //刷新tree
         Constants.projectTree.updateUI();
     }
-
+    //删除一个项目，并不从硬盘中删除
     public static void deleteProject(ProjectTreeNode node) {
         int resutlt = JOptionPane.showConfirmDialog(null, "确定删除该项目?");
         switch (resutlt) {

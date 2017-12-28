@@ -7,7 +7,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * @ClassName:     GraphTreeNode.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   表示graph的treenode
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月12日 上午9:58:10 
