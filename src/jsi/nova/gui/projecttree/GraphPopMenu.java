@@ -46,6 +46,7 @@ public class GraphPopMenu extends JPopupMenu{
         //
         openGraph.addActionListener(new GraphPopMenuActions.openGraphListener(node));     
         saveGraph.addActionListener(new GraphPopMenuActions.saveGraphListener(node));
+        runGraph.addActionListener(new RunWorkFlowListener(node));
         //
         this.add(openGraph);
         this.addSeparator();

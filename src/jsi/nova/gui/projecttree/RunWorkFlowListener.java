@@ -1,12 +1,16 @@
 /**
  * 
  */
-package jsi.nova.gui.listener;
+package jsi.nova.gui.projecttree;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,29 +30,49 @@ import jsi.nova.util.Constants;
 /**
  * @ClassName:     RunWorkFlowListener.java
  * @Description:   TODO(用一句话描述该文件做什么) 
- * @author         xulu
+ * @author         xulu 
  * @version        V1.0  
  * @Date           2017年12月7日 下午3:34:24 
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class RunWorkFlowListener implements ActionListener {
 
-    /* (non-Javadoc)
-     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-     */
-    private FileWriter fileWriter = null ;      //生成的xml文件
-    private Map<String, ArrayList<String>> edge = null ;
-    private ArrayList<String> edge_child = null ;
-    
+    private FileWriter fileWriter = null; //生成的xml文件
+    private Map<String, ArrayList<String>> edge = null;
+    private ArrayList<String> edge_child = null;
+
+    private GraphTreeNode node;
+    private Object[] cells;
+    private String current_working_path;
+
+    public RunWorkFlowListener(GraphTreeNode node) {
+        // TODO Auto-generated constructor stub
+        this.node = node;
+        this.current_working_path = new File(node.getGraphFile()).getParent();
+    }
+
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        //从文件中读取信息
+        XMLDecoder xmlDecoder;
+        try {
+            xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(new File(node.getGraphFile()))));
+            cells = (Object[]) xmlDecoder.readObject();
+            xmlDecoder.close();
+        } catch (FileNotFoundException e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+        //System.out.println(xmlDecoder.readObject().toString());
+
         mxGraphComponent graphComponent = Constants.graphComponent;
         edge = new HashMap<String, ArrayList<String>>();
         edge_child = new ArrayList<String>();
 
         try {
             //fileWriter = new FileWriter("C:/Users/Shaohan/Desktop/phase_test/workflow.xml");
-            fileWriter = new FileWriter(System.getProperty("user.dir") + File.separatorChar + "workflow.xml");
+            fileWriter = new FileWriter(
+                    current_working_path + File.separatorChar + node.getGraphName()+"workflow.xml");
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -63,12 +87,12 @@ public class RunWorkFlowListener implements ActionListener {
             e1.printStackTrace();
         }
 
-        for (Object cell : graphComponent.getCells(graphComponent.getBounds())) {
+        for (Object cell : cells) {
             mxCell c = (mxCell) cell;
 
             if (c.isEdge()) {
                 String parent = c.getSource().getValue().toString();
-                String child =  c.getTarget().getValue().toString();
+                String child = c.getTarget().getValue().toString();
                 edge_child = edge.get(parent);
                 if (edge_child == null) {
                     edge_child = new ArrayList<String>();
@@ -78,8 +102,8 @@ public class RunWorkFlowListener implements ActionListener {
                     edge_child.add(child);
                     edge.put(parent, edge_child);
                 }
-            } else if(c instanceof CommandsCell){
-//                System.out.println("dian" + c.getAttributes());
+            } else if (c instanceof CommandsCell) {
+                //                System.out.println("dian" + c.getAttributes());
                 try {
                     bufferedWriter.append("\t\t<node id = \'" + c.getValue().toString() + "\'>\n");
                     bufferedWriter.append("\t\t\t<input_file>input_data_1</input_file>\n");
@@ -99,7 +123,7 @@ public class RunWorkFlowListener implements ActionListener {
 
                     String commands = ((CommandsCell) cell).getCommands();
                     FileWriter bat_file = new FileWriter(
-                            System.getProperty("user.dir") + File.separatorChar + c.getValue().toString() + ".bat");
+                            current_working_path + File.separatorChar + c.getValue().toString() + ".bat");
                     BufferedWriter bat_Writer = new BufferedWriter(bat_file);
                     bat_Writer.write(commands);
                     bat_Writer.flush();
@@ -147,19 +171,20 @@ public class RunWorkFlowListener implements ActionListener {
             e1.printStackTrace();
         }
 
-        File file1 = new File("log");
-        file1.mkdir();//首先创建file1对应的文件夹
-        PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.execfile(System.getProperty("user.dir") + File.separatorChar + "workflow_dev.py");
-        String cmd1 = "cmd /c cd /d  " +System.getProperty("user.dir") + "&& condor_submit_dag workflow.dag";
-		 System.out.println(cmd1);
-		    try {
-				Runtime.getRuntime().exec(cmd1);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}    
-		  
-
+        //        File file1 = new File("log");
+        //        file1.mkdir();//首先创建file1对应的文件夹
+        //        PythonInterpreter interpreter = new PythonInterpreter();
+        //        interpreter.execfile(System.getProperty("user.dir") + File.separatorChar + "workflow_dev.py");
+        //        String cmd1 = "cmd /c cd /d  " +System.getProperty("user.dir") + "&& condor_submit_dag workflow.dag";
+        //		 System.out.println(cmd1);
+        //		    try {
+        //				Runtime.getRuntime().exec(cmd1);
+        //			} catch (IOException e1) {
+        //				// TODO Auto-generated catch block
+        //				e1.printStackTrace();
+        //			}    
+        //		  
+        //
+        //    }
     }
 }
