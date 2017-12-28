@@ -6,6 +6,7 @@ package jsi.nova.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -33,6 +34,8 @@ public class Constants {
     public static GraphAndMonitorSplitPanel graphAndMonitorSplitPanel;
     public static GraphAndCellsPanel graphAndCellsPanel;
     public static ProjectTreePanel projectTreePanel;
+    //Global Component
+    public static JTextArea MONITORAREA;
     //
     public static mxGraph graph = new mxGraph();
     public static mxGraphComponent graphComponent = new mxGraphComponent(graph);

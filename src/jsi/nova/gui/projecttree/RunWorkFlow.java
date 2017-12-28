@@ -35,24 +35,18 @@ import jsi.nova.util.Constants;
  * @Date           2017年12月7日 下午3:34:24 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class RunWorkFlowListener implements ActionListener {
+public class RunWorkFlow{
 
-    private FileWriter fileWriter = null; //生成的xml文件
-    private Map<String, ArrayList<String>> edge = null;
-    private ArrayList<String> edge_child = null;
+    private static FileWriter fileWriter = null; //生成的xml文件
+    private static Map<String, ArrayList<String>> edge = null;
+    private static ArrayList<String> edge_child = null;
 
-    private GraphTreeNode node;
-    private Object[] cells;
-    private String current_working_path;
+    private static Object[] cells;
+    private static String current_working_path;
 
-    public RunWorkFlowListener(GraphTreeNode node) {
-        // TODO Auto-generated constructor stub
-        this.node = node;
-        this.current_working_path = new File(node.getGraphFile()).getParent();
-    }
-
-    public void actionPerformed(ActionEvent e) {
+    public static void run(GraphTreeNode node) {
         // TODO Auto-generated method stub
+        current_working_path = new File(node.getGraphFile()).getParent();
         //从文件中读取信息
         XMLDecoder xmlDecoder;
         try {
@@ -72,7 +66,7 @@ public class RunWorkFlowListener implements ActionListener {
         try {
             //fileWriter = new FileWriter("C:/Users/Shaohan/Desktop/phase_test/workflow.xml");
             fileWriter = new FileWriter(
-                    current_working_path + File.separatorChar + node.getGraphName()+"workflow.xml");
+                    current_working_path + File.separatorChar + node.getUserObject().toString()+"workflow.xml");
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

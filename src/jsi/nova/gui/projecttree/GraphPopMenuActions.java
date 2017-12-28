@@ -36,10 +36,10 @@ public class GraphPopMenuActions {
     private static File tmp;
     private static File old;
 
-    public static class openGraphListener implements ActionListener {
+    public static class OpenGraphListener implements ActionListener {
         private GraphTreeNode node;
 
-        public openGraphListener(GraphTreeNode node) {
+        public OpenGraphListener(GraphTreeNode node) {
             // TODO Auto-generated constructor stub
             this.node = node;
         }
@@ -61,10 +61,10 @@ public class GraphPopMenuActions {
         }
     }
 
-    public static class saveGraphListener implements ActionListener {
+    public static class SaveGraphListener implements ActionListener {
         private GraphTreeNode node;
 
-        public saveGraphListener(GraphTreeNode node) {
+        public SaveGraphListener(GraphTreeNode node) {
             // TODO Auto-generated constructor stub
             this.node = node;
         }
@@ -79,6 +79,22 @@ public class GraphPopMenuActions {
                 e1.printStackTrace();
             }
         }
+    }
+    
+    public static class RunGraphListener implements ActionListener{
+        private GraphTreeNode node;
+
+        public RunGraphListener(GraphTreeNode node) {
+            // TODO Auto-generated constructor stub
+            this.node = node;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            RunWorkFlow.run(node);
+            editMonitorArea();
+        }
+        
     }
     //打开文件
     public static void openGraphFile(GraphTreeNode node) throws FileNotFoundException {
@@ -169,5 +185,10 @@ public class GraphPopMenuActions {
             }
         }
         return true;
+    }
+    //给监控面板添加信息
+    public static void editMonitorArea(){
+        Constants.MONITORAREA.setText(" workflow is runing.");
+        Constants.MONITORAREA.setText(" workflow is runing....");
     }
 }
