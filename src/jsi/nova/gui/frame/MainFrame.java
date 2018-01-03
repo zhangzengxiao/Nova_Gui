@@ -28,12 +28,9 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class MainFrame extends JFrame{
-
-    public MainFrame() {
+    private static MainFrame mainFrame = new MainFrame();
+    private MainFrame() {
         // TODO Auto-generated constructor stub
-        
-        //
-        Constants.mainFrame = this;
         this.setTitle("NOVA");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
@@ -41,7 +38,7 @@ public class MainFrame extends JFrame{
         this.add(MainSplitPanel.getSplitPanel(), BorderLayout.CENTER);
         this.setJMenuBar(new TopMenuBar());
         
-        //this.addComponentListener(new FrameResizeListener());
+        this.addComponentListener(new FrameResizeListener());
         this.addWindowListener(new FrameWindowListener());
         this.setResizable(true);
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -53,7 +50,14 @@ public class MainFrame extends JFrame{
         GraphAndCellsPanel.getPanel().setDividerLocation(0.8);
         this.setLocationRelativeTo(null);
     }
-    
+
+    public static MainFrame getMainFrame() {
+//        if(mainFrame == null){
+//            mainFrame = new MainFrame();
+//        }
+        return mainFrame;
+    }
+
     @Override
     protected void processWindowEvent(WindowEvent e) {
         // TODO Auto-generated method stub

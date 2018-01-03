@@ -71,7 +71,7 @@ public class SaveGraphListener implements ActionListener {
         param.setCompressedText(new String[] { "mxGraphModel", xml });
         //
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showSaveDialog(Constants.mainFrame);
+        jFileChooser.showSaveDialog(null);
         File filename = jFileChooser.getSelectedFile();
         FileOutputStream outputStream = new FileOutputStream(filename);
         try {
@@ -90,7 +90,7 @@ public class SaveGraphListener implements ActionListener {
     public void save2(){
         XMLEncoder xmlEncoder = null;
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showSaveDialog(Constants.mainFrame);
+        jFileChooser.showSaveDialog(null);
         File savefile = jFileChooser.getSelectedFile();
         if (savefile == null)
             return;

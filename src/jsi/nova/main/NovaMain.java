@@ -28,6 +28,6 @@ public class NovaMain {
             e.printStackTrace();
         }
         //
-        Constants.mainFrame =  new MainFrame();
+        MainFrame.getMainFrame();
     }
 }

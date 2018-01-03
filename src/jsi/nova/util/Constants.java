@@ -34,7 +34,6 @@ public class Constants {
     //
     public static mxGraph graph = new mxGraph();
     public static mxGraphComponent graphComponent = new mxGraphComponent(graph);
-    public static MainFrame mainFrame =null;
     
     //projectTree
     public static DefaultMutableTreeNode projectTreeTop = new DefaultMutableTreeNode("ÏîÄ¿×ÜÀÀ");

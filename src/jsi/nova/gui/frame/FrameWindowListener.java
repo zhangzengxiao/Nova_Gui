@@ -22,7 +22,7 @@ import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     FrameWindowListener.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   窗口打开和关闭时的一些操作 
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月12日 上午10:05:49 

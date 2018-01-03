@@ -45,7 +45,7 @@ public class OpenGraphListener implements ActionListener {
 
     public void openGraph() throws FileNotFoundException, UnsupportedEncodingException {
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showOpenDialog(Constants.mainFrame);
+        jFileChooser.showOpenDialog(null);
         File file = jFileChooser.getSelectedFile();
         Map<String, String> text = mxPngTextDecoder.decodeCompressedText(new FileInputStream(file));
 
@@ -64,7 +64,7 @@ public class OpenGraphListener implements ActionListener {
     public void open2() {
         XMLDecoder xmlDecoder = null;
         JFileChooser jFileChooser = new JFileChooser();
-        jFileChooser.showOpenDialog(Constants.mainFrame);
+        jFileChooser.showOpenDialog(null);
         File openfile = jFileChooser.getSelectedFile();
         if (openfile == null)
             return;
