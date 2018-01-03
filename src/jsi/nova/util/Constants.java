@@ -29,11 +29,6 @@ import jsi.nova.gui.panel.ProjectTreePanel;
  */
 public class Constants {
     
-    //split panel
-    public static MainSplitPanel mainSplitPanel;
-    public static GraphAndMonitorSplitPanel graphAndMonitorSplitPanel;
-    public static GraphAndCellsPanel graphAndCellsPanel;
-    public static ProjectTreePanel projectTreePanel;
     //Global Component
     public static JTextArea MONITORAREA;
     //

@@ -24,11 +24,12 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphPanel extends JPanel{
-    mxGraphComponent mxGraphComponent = Constants.graphComponent;
-    ImageIcon icon;  
-    Image img; 
+    private mxGraphComponent mxGraphComponent = Constants.graphComponent;
+    private ImageIcon icon;  
+    private Image img;
+    private static GraphPanel Panel = new GraphPanel();
     
-    public GraphPanel() {
+    private GraphPanel() {
         // TODO Auto-generated constructor stub
         this.setLayout(new GridLayout(1, 1));
         icon=new ImageIcon("./img/background.png");  
@@ -42,5 +43,8 @@ public class GraphPanel extends JPanel{
         super.paintComponent(g);  
         //下面这行是为了背景图片可以跟随窗口自行调整大小，可以自己设置成固定大小  
         g.drawImage(img, 0, 0,this.getWidth(), this.getHeight(), this);  
-    }  
+    }
+    public static GraphPanel getPanel() {
+        return Panel;
+    }
 }

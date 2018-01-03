@@ -4,6 +4,8 @@
 package jsi.nova.gui.frame;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 
@@ -11,6 +13,8 @@ import javax.swing.JFrame;
 
 import jsi.nova.gui.MenuBar.TopMenuBar;
 import jsi.nova.gui.ToolBar.NovaToolBar;
+import jsi.nova.gui.panel.GraphAndCellsPanel;
+import jsi.nova.gui.panel.GraphAndMonitorSplitPanel;
 import jsi.nova.gui.panel.MainSplitPanel;
 import jsi.nova.gui.projecttree.GraphPopMenuActions;
 import jsi.nova.util.Constants;
@@ -27,23 +31,26 @@ public class MainFrame extends JFrame{
 
     public MainFrame() {
         // TODO Auto-generated constructor stub
-        Constants.mainSplitPanel = new MainSplitPanel();
+        
         //
         Constants.mainFrame = this;
         this.setTitle("NOVA");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         this.add(new NovaToolBar(), BorderLayout.NORTH);
-        this.add(Constants.mainSplitPanel, BorderLayout.CENTER);
+        this.add(MainSplitPanel.getSplitPanel(), BorderLayout.CENTER);
         this.setJMenuBar(new TopMenuBar());
         
+        //this.addComponentListener(new FrameResizeListener());
         this.addWindowListener(new FrameWindowListener());
         this.setResizable(true);
-        this.setSize(1000,620);
+        Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize((int)(screensize.width*0.6),(int)(screensize.getHeight()*0.6));
         this.setVisible(true);
-        Constants.graphAndCellsPanel.setDividerLocation(0.8);
-        Constants.graphAndMonitorSplitPanel.setDividerLocation(0.8);
-        Constants.mainSplitPanel.setDividerLocation(0.11);
+        
+        GraphAndMonitorSplitPanel.getSplitPanel().setDividerLocation(0.8);
+        MainSplitPanel.getSplitPanel().setDividerLocation(0.11);
+        GraphAndCellsPanel.getPanel().setDividerLocation(0.8);
         this.setLocationRelativeTo(null);
     }
     

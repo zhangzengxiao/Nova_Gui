@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 
 import javax.swing.JTree;
 
+import jsi.nova.gui.panel.ProjectTreePanel;
 import jsi.nova.gui.projecttree.ProjectTreeMouseListener;
 import jsi.nova.util.Constants;
 
@@ -29,9 +30,6 @@ import jsi.nova.util.Constants;
  */
 public class FrameWindowListener implements WindowListener {
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowOpened(java.awt.event.WindowEvent)
-     */
     @Override
     public void windowOpened(WindowEvent e) {
         // TODO Auto-generated method stub
@@ -41,13 +39,10 @@ public class FrameWindowListener implements WindowListener {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        Constants.projectTreePanel.add(Constants.projectTree);
-        Constants.projectTreePanel.updateUI();
+        ProjectTreePanel.getPanel().add(Constants.projectTree);
+        ProjectTreePanel.getPanel().updateUI();
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowClosing(java.awt.event.WindowEvent)
-     */
     @Override
     public void windowClosing(WindowEvent e) {
         // TODO Auto-generated method stub
@@ -61,47 +56,32 @@ public class FrameWindowListener implements WindowListener {
         }
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowClosed(java.awt.event.WindowEvent)
-     */
     @Override
     public void windowClosed(WindowEvent e) {
         // TODO Auto-generated method stub
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowIconified(java.awt.event.WindowEvent)
-     */
     @Override
     public void windowIconified(WindowEvent e) {
         // TODO Auto-generated method stub
 
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowDeiconified(java.awt.event.WindowEvent)
-     */
     @Override
     public void windowDeiconified(WindowEvent e) {
         // TODO Auto-generated method stub
 
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowActivated(java.awt.event.WindowEvent)
-     */
     @Override
     public void windowActivated(WindowEvent e) {
         // TODO Auto-generated method stub
 
     }
 
-    /* (non-Javadoc)
-     * @see java.awt.event.WindowListener#windowDeactivated(java.awt.event.WindowEvent)
-     */
-    @Override
     public void windowDeactivated(WindowEvent e) {
         // TODO Auto-generated method stub
+        
 
     }
 

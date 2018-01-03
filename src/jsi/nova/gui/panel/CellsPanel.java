@@ -53,8 +53,9 @@ public class CellsPanel extends JPanel {
     protected mxEventSource eventSource = new mxEventSource(this);
     private JScrollPane scrollPane;
     private JPanel innerPanel;
+    private static CellsPanel Panel = new CellsPanel();
 
-    public CellsPanel() {
+    private CellsPanel() {
         // TODO Auto-generated constructor stub
         this.setLayout(new GridLayout(1, 1));
         innerPanel = new JPanel();
@@ -214,6 +215,13 @@ public class CellsPanel extends JPanel {
 
     public void clearSelection() {
         setSelectionEntry(null, null);
+    }
+
+    /**
+     * @return the cellsPanel
+     */
+    public static CellsPanel getPanel() {
+        return Panel;
     }
 
 }

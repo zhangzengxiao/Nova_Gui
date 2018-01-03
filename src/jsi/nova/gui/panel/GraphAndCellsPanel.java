@@ -14,16 +14,18 @@ import javax.swing.JSplitPane;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphAndCellsPanel extends JSplitPane{
-    private GraphPanel graphPanel;
-    private CellsPanel cellsPanel;
-    public GraphAndCellsPanel(int newOrientation) {
+    
+    private static GraphAndCellsPanel panel = new GraphAndCellsPanel(JSplitPane.HORIZONTAL_SPLIT);
+    
+    private GraphAndCellsPanel(int newOrientation) {
         // TODO Auto-generated constructor stub
         super(newOrientation);
-        graphPanel = new GraphPanel();
-        cellsPanel = new CellsPanel();
         //
-        this.setLeftComponent(graphPanel);
-        this.setRightComponent(cellsPanel);
+        this.setLeftComponent(GraphPanel.getPanel());
+        this.setRightComponent(CellsPanel.getPanel());
     }
 
+    public static GraphAndCellsPanel getPanel() {
+        return panel;
+    }
 }

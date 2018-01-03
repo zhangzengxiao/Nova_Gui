@@ -16,17 +16,18 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphAndMonitorSplitPanel extends JSplitPane{
-
-    private MonitorPanel monitorPanel;
+    private static GraphAndMonitorSplitPanel splitPanel = new GraphAndMonitorSplitPanel(JSplitPane.VERTICAL_SPLIT);
     
-    public GraphAndMonitorSplitPanel(int newOrientation) {
+    private GraphAndMonitorSplitPanel(int newOrientation) {
         // TODO Auto-generated constructor stub
         super(newOrientation);
-        Constants.graphAndCellsPanel = new GraphAndCellsPanel(JSplitPane.HORIZONTAL_SPLIT);
-        monitorPanel = new MonitorPanel();
         //
-        this.setLeftComponent(Constants.graphAndCellsPanel);
-        this.setRightComponent(monitorPanel);
+        this.setLeftComponent(GraphAndCellsPanel.getPanel());
+        this.setRightComponent(MonitorPanel.getPanel());
+    }
+
+    public static GraphAndMonitorSplitPanel getSplitPanel() {
+        return splitPanel;
     }
 
 }
