@@ -6,6 +6,7 @@ package jsi.nova.gui.ToolBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import jsi.nova.jgraphx.FinalGraphComponent;
 import jsi.nova.util.Constants;
 
 /**
@@ -24,7 +25,7 @@ public class ZoomInListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        Constants.graphComponent.zoomIn();
+        FinalGraphComponent.getGraphComponent().zoomIn();
     }
 
 }

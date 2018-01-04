@@ -19,9 +19,13 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.w3c.dom.Document;
 
+import com.mxgraph.io.mxCodec;
+import com.mxgraph.util.mxUtils;
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.jgraphx.FinalGraphComponent;
 import jsi.nova.util.Constants;
 
 /**
@@ -80,14 +84,15 @@ public class GraphPopMenuActions {
             }
         }
     }
-    
-    public static class RunGraphListener implements ActionListener{
+
+    public static class RunGraphListener implements ActionListener {
         private GraphTreeNode node;
 
         public RunGraphListener(GraphTreeNode node) {
             // TODO Auto-generated constructor stub
             this.node = node;
         }
+
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
@@ -100,12 +105,16 @@ public class GraphPopMenuActions {
             RunWorkFlow.run(node);
             editMonitorArea();
         }
-        
+
     }
+
     //打开文件
     public static void openGraphFile(GraphTreeNode node) throws FileNotFoundException {
         //IfChangedGraph graph = new IfChangedGraph();
         mxGraph graph = new mxGraph();
+        mxCodec codec = new mxCodec();
+        Document doc = mxUtils.loadDocument(FinalGraphComponent.class.getResource("/resources/default-style.xml").toString());
+        codec.decode(doc.getDocumentElement(), graph.getStylesheet());
         File graphFile = new File(node.getGraphFile());
         //ConstantsRepository.OPENDGRAPH.put(graphFile.getAbsolutePath(), graph);
         //设置当前的文件和显示的图
@@ -120,17 +129,21 @@ public class GraphPopMenuActions {
         }
         xmlDecoder.close();
         //设置graphcomponent
-        Constants.graphComponent.setVisible(true);
-        Constants.graphComponent.setGridVisible(true);
-        Constants.graphComponent.setGraph(graph);
-        Constants.graphComponent.updateUI();
+        //        Constants.graphComponent.setVisible(true);
+        //        Constants.graphComponent.setGridVisible(true);
+        //        Constants.graphComponent.setGraph(graph);
+        //        Constants.graphComponent.updateUI();
+        FinalGraphComponent.getGraphComponent().setVisible(true);
+        FinalGraphComponent.getGraphComponent().setGridVisible(true);
+        FinalGraphComponent.getGraphComponent().setGraph(graph);
+        FinalGraphComponent.getGraphComponent().updateUI();
     }
 
     public static void saveGraphFile() throws FileNotFoundException {
         if (Constants.CURRENTWORKINGGRAPH != null && Constants.CURRENTWORKINGFILE != null) {
             XMLEncoder xmlEncoder = new XMLEncoder(
                     new BufferedOutputStream(new FileOutputStream(new File(Constants.CURRENTWORKINGFILE))));
-            Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
+            Object[] cells = FinalGraphComponent.getGraphComponent().getCells(FinalGraphComponent.getGraphComponent().getBounds());
             xmlEncoder.writeObject(cells);
             xmlEncoder.close();
             JOptionPane.showMessageDialog(null, "保存成功");
@@ -144,7 +157,7 @@ public class GraphPopMenuActions {
         tmp.createNewFile();
         //把当前的图存到临时文件中
         XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(tmp)));
-        Object[] cells = Constants.graphComponent.getCells(Constants.graphComponent.getBounds());
+        Object[] cells = FinalGraphComponent.getGraphComponent().getCells(FinalGraphComponent.getGraphComponent().getBounds());
         xmlEncoder.writeObject(cells);
         xmlEncoder.close();
         old = new File(path);
@@ -186,14 +199,15 @@ public class GraphPopMenuActions {
                     break;
                 }
             }
-            if(tmp.exists()){
+            if (tmp.exists()) {
                 tmp.delete();
             }
         }
         return true;
     }
+
     //给监控面板添加信息
-    public static void editMonitorArea(){
+    public static void editMonitorArea() {
         Constants.MONITORAREA.setText(" workflow is runing.");
         Constants.MONITORAREA.setText(" workflow is runing....");
     }

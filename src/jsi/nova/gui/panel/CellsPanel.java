@@ -63,8 +63,8 @@ public class CellsPanel extends JPanel {
         scrollPane = new JScrollPane(innerPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        this.addCommandsCell("Commands", new ImageIcon("./img/rounded.png"), "image;image=/img/server.png", 80, 50, "");
-        this.addInnerGraphCell("InnerGraph", new ImageIcon("./img/triangle.png"), "image;image=/img/server.png", 80, 50, "");
+        this.addCommandsCell("Commands", new ImageIcon(CellsPanel.class.getResource("/img/rounded.png")), "image;image=/img/rounded.png", 80, 50, "");
+        this.addInnerGraphCell("InnerGraph", new ImageIcon(CellsPanel.class.getResource("/img/triangle.png")), "image;image=/img/server.png", 80, 50, "");
         this.add(scrollPane);
         this.addComponentListener(new ComponentAdapter()
         {

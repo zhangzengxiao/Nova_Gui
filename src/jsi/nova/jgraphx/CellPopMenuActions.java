@@ -62,7 +62,7 @@ public class CellPopMenuActions {
     //´ÓÍ¼ÖÐÉ¾³ýcell
     public static void removeCell(mxCell cell) {
         Object[] cells = { cell };
-        Constants.graphComponent.getGraph().removeCells(cells);
+        FinalGraphComponent.getGraphComponent().getGraph().removeCells(cells);
     }
 
 }

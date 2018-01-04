@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 
 import com.mxgraph.swing.mxGraphComponent;
 
+import jsi.nova.jgraphx.FinalGraphComponent;
 import jsi.nova.jgraphx.LeftMouseButtonListener;
 import jsi.nova.util.Constants;
 
@@ -25,7 +26,7 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GraphPanel extends JPanel{
-    private mxGraphComponent mxGraphComponent = Constants.graphComponent;
+    //private mxGraphComponent mxGraphComponent = Constants.graphComponent;
     private ImageIcon icon;  
     private Image img;
     private static GraphPanel Panel = new GraphPanel();
@@ -33,12 +34,13 @@ public class GraphPanel extends JPanel{
     private GraphPanel() {
         // TODO Auto-generated constructor stub
         this.setLayout(new GridLayout(1, 1));
-        icon=new ImageIcon("./img/background.png");  
+        icon=new ImageIcon(GraphPanel.class.getResource("/img/background.png"));  
         img=icon.getImage();
         
-        mxGraphComponent.getGraphControl().addMouseListener(new LeftMouseButtonListener());
-        mxGraphComponent.setVisible(false);
-        this.add(mxGraphComponent);
+//        mxGraphComponent.getGraphControl().addMouseListener(new LeftMouseButtonListener());
+//        mxGraphComponent.setVisible(false);
+        //this.add(mxGraphComponent);
+        this.add(FinalGraphComponent.getGraphComponent());
     }
     public void paintComponent(Graphics g) {  
         super.paintComponent(g);  

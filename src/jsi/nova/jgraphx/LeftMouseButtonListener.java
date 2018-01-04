@@ -26,7 +26,6 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -38,11 +37,11 @@ public class LeftMouseButtonListener implements MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         // TODO Auto-generated method stub
-        mxCell cell = (mxCell) Constants.graphComponent.getCellAt(e.getX(), e.getY());
+        mxCell cell = (mxCell) FinalGraphComponent.getGraphComponent().getCellAt(e.getX(), e.getY());
         if (SwingUtilities.isRightMouseButton(e)) {
             if (cell != null) {
                 cmenu = new CellPopMenu(cell);
-                cmenu.show(Constants.graphComponent, e.getX(), e.getY());
+                cmenu.show(FinalGraphComponent.getGraphComponent(), e.getX(), e.getY());
             }
         }
     }

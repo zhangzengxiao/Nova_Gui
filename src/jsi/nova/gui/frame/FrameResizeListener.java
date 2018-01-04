@@ -22,7 +22,7 @@ public class FrameResizeListener implements ComponentListener{
     @Override
     public void componentResized(ComponentEvent e) {
         // TODO Auto-generated method stub
-        System.out.println("max");
+        //System.out.println("max");
     }
 
     /* (non-Javadoc)

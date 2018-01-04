@@ -27,7 +27,7 @@ public class Constants {
     public static JTextArea MONITORAREA;
     //
     public static mxGraph graph = new mxGraph();
-    public static mxGraphComponent graphComponent = new mxGraphComponent(graph);
+    //public static mxGraphComponent graphComponent = new mxGraphComponent(graph);
     
     //projectTree
     public static DefaultMutableTreeNode projectTreeTop = new DefaultMutableTreeNode("ÏîÄ¿×ÜÀÀ");

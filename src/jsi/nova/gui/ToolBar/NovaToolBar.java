@@ -6,9 +6,6 @@ package jsi.nova.gui.ToolBar;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
-import jsi.nova.gui.listener.AddNodeListener;
-import jsi.nova.gui.listener.OpenGraphListener;
-import jsi.nova.gui.listener.SaveGraphListener;
 import jsi.nova.util.GuiUtil;
 
 /**
@@ -50,9 +47,9 @@ public class NovaToolBar extends JToolBar {
         testButton = new JButton("≤‚ ‘");
         //
         //runWorkflow.addActionListener(new RunWorkFlowListener());
-        addNode.addActionListener(new AddNodeListener());
-        saveGraph.addActionListener(new SaveGraphListener());
-        openGraph.addActionListener(new OpenGraphListener());
+//        addNode.addActionListener(new AddNodeListener());
+//        saveGraph.addActionListener(new SaveGraphListener());
+//        openGraph.addActionListener(new OpenGraphListener());
         zoomin.addActionListener(new ZoomInListener());
         zoomout.addActionListener(new ZoomOutListener());
         testButton.addActionListener(new TestPrintListener());
