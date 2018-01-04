@@ -19,10 +19,9 @@ import javax.swing.JOptionPane;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class GuiUtil {
-    private static String imageFolder = "./img";
 
     public static void setImageIcon(JButton b, String fileName, String tip) {
-        ImageIcon i = new ImageIcon(new File(imageFolder, fileName).getAbsolutePath());
+        ImageIcon i = new ImageIcon(GuiUtil.class.getResource("/img/"+fileName));
         Image smalli = i.getImage();
         smalli = smalli.getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         i.setImage(smalli);
