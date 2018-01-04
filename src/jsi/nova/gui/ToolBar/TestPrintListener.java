@@ -25,7 +25,6 @@ public class TestPrintListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        mxGraph graph = Constants.graph;
         mxGraphComponent mg = FinalGraphComponent.getGraphComponent();
         for(Object cell : mg.getCells(mg.getBounds())){
             System.out.println(cell);
