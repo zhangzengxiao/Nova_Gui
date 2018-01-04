@@ -18,8 +18,7 @@ import javax.swing.JMenuItem;
  */
 public class TopMenuBar extends JMenuBar{
     private JMenu file;
-    private JMenu help;
-    
+    private JMenu help;  
     public TopMenuBar() {
         // TODO Auto-generated constructor stub
         file = new JMenu("нд╪Ч");

@@ -43,6 +43,7 @@ public class NewprojectDialog extends JDialog {
 
     private NewprojectDialog() {
         // TODO Auto-generated constructor stub
+        //初始化组件，确定位置
         lprojectName = new JLabel("项目名称:");
         lprojectName.setBounds(10, 18, 65, 15);
 
@@ -63,11 +64,11 @@ public class NewprojectDialog extends JDialog {
 
         bcancel = new JButton("取消");
         bcancel.setBounds(338, 79, 93, 23);
-        //
+        //给按钮添加响应事件
         bbrowse.addActionListener(new BrowseListener());
         bconfirm.addActionListener(new ConfirmListener());
         bcancel.addActionListener(new ConfirmListener());
-        //
+        //添加组件
         this.add(lprojectName);
         this.add(lprojectLocation);
         this.add(tprojectLocatiuon);

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @ClassName:     MenuBarActions.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   MeunBar所对应的响应函数们
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2018年1月3日 下午3:51:29 
