@@ -5,6 +5,7 @@ package jsi.nova.gui.frame;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.awt.image.BufferedImageFilter;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.BufferedInputStream;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.net.URL;
 
 import javax.swing.JTree;
 
@@ -84,19 +86,20 @@ public class FrameWindowListener implements WindowListener {
         
 
     }
-
+    //保存项目树的配置文件
     public void saveProjectTree() throws FileNotFoundException {
-        File treeConfig = new File("./config/ProjectTree.con");
-        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(treeConfig)));
+        File treeconfig = new File(this.getClass().getResource("/config/ProjectTree.con").getFile());
+        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(treeconfig)));
         Constants.projectTree.removeMouseListener(Constants.projectTree.getMouseListeners()[0]);
         Constants.projectTree.setSelectionPath(null);
         xmlEncoder.writeObject(Constants.projectTree);
         xmlEncoder.close();
     }
-
+    //打开项目树的配置文件
     public void openProjectTree() throws FileNotFoundException {
-        File treeConfig = new File("./config/ProjectTree.con");
-        XMLDecoder xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(treeConfig)));
+        BufferedInputStream inputStream = (BufferedInputStream) this.getClass().getResourceAsStream("/config/ProjectTree.con");
+        //System.out.println(treeConfig.getAbsolutePath());
+        XMLDecoder xmlDecoder = new XMLDecoder(inputStream);
         Constants.projectTree = (JTree) xmlDecoder.readObject();
         Constants.projectTree.addMouseListener(new ProjectTreeMouseListener());
         xmlDecoder.close();
