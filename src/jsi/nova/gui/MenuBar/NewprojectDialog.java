@@ -27,16 +27,18 @@ import jsi.nova.util.GuiUtil;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class NewprojectDialog extends JDialog {
-    private JLabel lprojectName = null;
-    private JLabel lprojectLocation = null;
-    private TextField tprojectname = null;
-    private TextField tprojectLocatiuon = null;
-    private JButton bbrowse = null;
-    private JButton bconfirm = null;
-    private JButton bcancel = null;
-    private String path = null;
+    private JLabel lprojectName;
+    private JLabel lprojectLocation;
+    private TextField tprojectname;
+    private TextField tprojectLocatiuon ;
+    private JButton bbrowse;
+    private JButton bconfirm;
+    private JButton bcancel;
+    private String path;
+    
+    private static NewprojectDialog newprojectDialog = new NewprojectDialog();
 
-    public NewprojectDialog() {
+    private NewprojectDialog() {
         // TODO Auto-generated constructor stub
         lprojectName = new JLabel("项目名称:");
         lprojectName.setBounds(10, 18, 65, 15);
@@ -99,6 +101,14 @@ public class NewprojectDialog extends JDialog {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
+    /**
+     * @return the newprojectDialog
+     */
+    public static NewprojectDialog getNewprojectDialog() {
+        return newprojectDialog;
+    }
+
 
     public void chooseWorkingPath() {
         JFileChooser fileChooser = new JFileChooser();

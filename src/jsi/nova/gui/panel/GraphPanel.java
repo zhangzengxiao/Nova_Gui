@@ -9,6 +9,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import com.mxgraph.swing.mxGraphComponent;
 

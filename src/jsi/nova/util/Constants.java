@@ -13,12 +13,6 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.view.mxGraph;
 
-import jsi.nova.gui.frame.MainFrame;
-import jsi.nova.gui.panel.GraphAndCellsPanel;
-import jsi.nova.gui.panel.GraphAndMonitorSplitPanel;
-import jsi.nova.gui.panel.MainSplitPanel;
-import jsi.nova.gui.panel.ProjectTreePanel;
-
 /**
  * @ClassName:     ConstantsRepository.java
  * @Description:   ConstantsRepository，保存全局变量

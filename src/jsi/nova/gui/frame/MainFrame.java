@@ -17,7 +17,6 @@ import jsi.nova.gui.panel.GraphAndCellsPanel;
 import jsi.nova.gui.panel.GraphAndMonitorSplitPanel;
 import jsi.nova.gui.panel.MainSplitPanel;
 import jsi.nova.gui.projecttree.GraphPopMenuActions;
-import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     MainFrame.java
@@ -44,9 +43,9 @@ public class MainFrame extends JFrame{
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize((int)(screensize.width*0.6),(int)(screensize.getHeight()*0.6));
         this.setVisible(true);
-        
-        GraphAndMonitorSplitPanel.getSplitPanel().setDividerLocation(0.8);
+       
         MainSplitPanel.getSplitPanel().setDividerLocation(0.11);
+        GraphAndMonitorSplitPanel.getSplitPanel().setDividerLocation(0.8);
         GraphAndCellsPanel.getPanel().setDividerLocation(0.8);
         this.setLocationRelativeTo(null);
     }

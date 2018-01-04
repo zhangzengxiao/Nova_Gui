@@ -5,12 +5,6 @@ package jsi.nova.gui.frame;
 
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowStateListener;
-
-import javax.swing.JFrame;
-
-import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     FrameResizeListener.java

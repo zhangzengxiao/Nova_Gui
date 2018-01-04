@@ -5,8 +5,6 @@ package jsi.nova.gui.panel;
 
 import javax.swing.JSplitPane;
 
-import jsi.nova.util.Constants;
-
 /**
  * @ClassName:     GraphAndMonitorSplitPanel.java
  * @Description:   TODO(用一句话描述该文件做什么) 

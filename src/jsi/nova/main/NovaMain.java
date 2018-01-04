@@ -7,7 +7,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import jsi.nova.gui.frame.MainFrame;
-import jsi.nova.util.Constants;
 
 /**
  * @ClassName:     NovaMain.java

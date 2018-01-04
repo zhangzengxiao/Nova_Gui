@@ -5,8 +5,6 @@ package jsi.nova.gui.panel;
 
 import javax.swing.JSplitPane;
 
-import jsi.nova.util.Constants;
-
 /**
  * @ClassName:     MainSplitPanel.java
  * @Description:   this panel contain all of other panel
