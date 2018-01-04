@@ -33,17 +33,19 @@ public class MainFrame extends JFrame{
         this.setTitle("NOVA");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
+        //添加组件
         this.add(new NovaToolBar(), BorderLayout.NORTH);
         this.add(MainSplitPanel.getSplitPanel(), BorderLayout.CENTER);
         this.setJMenuBar(new TopMenuBar());
-        
+        //添加响应函数
         this.addComponentListener(new FrameResizeListener());
         this.addWindowListener(new FrameWindowListener());
         this.setResizable(true);
+        //设置大小
         Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize((int)(screensize.width*0.6),(int)(screensize.getHeight()*0.6));
         this.setVisible(true);
-       
+        //分配几个splitPanel的比例
         MainSplitPanel.getSplitPanel().setDividerLocation(0.11);
         GraphAndMonitorSplitPanel.getSplitPanel().setDividerLocation(0.8);
         GraphAndCellsPanel.getPanel().setDividerLocation(0.8);
@@ -51,13 +53,11 @@ public class MainFrame extends JFrame{
     }
 
     public static MainFrame getMainFrame() {
-//        if(mainFrame == null){
-//            mainFrame = new MainFrame();
-//        }
         return mainFrame;
     }
 
     @Override
+    //点击关闭按钮时的响应事件
     protected void processWindowEvent(WindowEvent e) {
         // TODO Auto-generated method stub
         if(e.getID() == WindowEvent.WINDOW_CLOSING){

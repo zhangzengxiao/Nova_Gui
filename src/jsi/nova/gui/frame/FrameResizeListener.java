@@ -8,7 +8,7 @@ import java.awt.event.ComponentListener;
 
 /**
  * @ClassName:     FrameResizeListener.java
- * @Description:   TODO(用一句话描述该文件做什么) 
+ * @Description:   当Frame大小发生改变时的响应事件 
  * @author         zhangzengxiao
  * @version        V1.0  
  * @Date           2017年12月28日 下午4:43:33 

@@ -28,6 +28,7 @@ public class FrameWindowListener implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
         // TODO Auto-generated method stub
+        //projectPanel加载 tree并刷新
         ProjectTreePanel.getPanel().add(tree);
         ProjectTreePanel.getPanel().updateUI();
     }
@@ -35,7 +36,6 @@ public class FrameWindowListener implements WindowListener {
     @Override
     public void windowClosing(WindowEvent e) {
         // TODO Auto-generated method stub
-        //判断图是否改变过
         //保存项目结构树
         try {
             saveProjectTree();
@@ -82,13 +82,4 @@ public class FrameWindowListener implements WindowListener {
         xmlEncoder.writeObject(ProjectTreePanel.getProject_tree());
         xmlEncoder.close();
     }
-    //打开项目树的配置文件
-    //    public void openProjectTree() throws FileNotFoundException {
-    //        BufferedInputStream inputStream = (BufferedInputStream) this.getClass().getResourceAsStream("/config/ProjectTree.con");
-    //        //System.out.println(treeConfig.getAbsolutePath());
-    //        XMLDecoder xmlDecoder = new XMLDecoder(inputStream);
-    //        Constants.projectTree = (JTree) xmlDecoder.readObject();
-    //        Constants.projectTree.addMouseListener(new ProjectTreeMouseListener());
-    //        xmlDecoder.close();
-    //    }
 }
