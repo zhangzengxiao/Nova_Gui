@@ -10,8 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import jsi.nova.gui.panel.ProjectTreePanel;
 import jsi.nova.util.Constants;
 
 /**
@@ -23,7 +25,9 @@ import jsi.nova.util.Constants;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class ProjectPopMenuActions {
-
+    
+    private static JTree tree = ProjectTreePanel.getProject_tree();
+    
     public static class addGraphListener implements ActionListener {
         private ProjectTreeNode node;
 
@@ -75,16 +79,16 @@ public class ProjectPopMenuActions {
         fw.close();
         node.add(graphnode);
         //刷新tree
-        Constants.projectTree.updateUI();
+        tree.updateUI();
     }
     //删除一个项目，并不从硬盘中删除
     public static void deleteProject(ProjectTreeNode node) {
         int resutlt = JOptionPane.showConfirmDialog(null, "确定删除该项目?");
         switch (resutlt) {
         case 0:
-            DefaultMutableTreeNode root = (DefaultMutableTreeNode) Constants.projectTree.getModel().getRoot();
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel().getRoot();
             root.remove(node);
-            Constants.projectTree.updateUI();            
+            tree.updateUI();            
             break;
         default:
             break;

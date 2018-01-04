@@ -12,8 +12,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import jsi.nova.gui.panel.ProjectTreePanel;
 import jsi.nova.gui.projecttree.ProjectTreeNode;
 import jsi.nova.util.Constants;
 import jsi.nova.util.GuiUtil;
@@ -37,6 +39,7 @@ public class NewprojectDialog extends JDialog {
     private String path;
     
     private static NewprojectDialog newprojectDialog = new NewprojectDialog();
+    private JTree tree = ProjectTreePanel.getProject_tree();
 
     private NewprojectDialog() {
         // TODO Auto-generated constructor stub
@@ -61,31 +64,9 @@ public class NewprojectDialog extends JDialog {
         bcancel = new JButton("取消");
         bcancel.setBounds(338, 79, 93, 23);
         //
-        bbrowse.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                chooseWorkingPath();
-            }
-        });
-
-        bconfirm.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                newProject();
-            }
-        });
-        bcancel.addActionListener(new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                dispose();
-            }
-        });
+        bbrowse.addActionListener(new BrowseListener());
+        bconfirm.addActionListener(new ConfirmListener());
+        bcancel.addActionListener(new ConfirmListener());
         //
         this.add(lprojectName);
         this.add(lprojectLocation);
@@ -105,11 +86,37 @@ public class NewprojectDialog extends JDialog {
     /**
      * @return the newprojectDialog
      */
+    
+    class BrowseListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            chooseWorkingPath();
+        }
+        
+    }
+    class ConfirmListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            newProject();
+        }
+        
+    }
+    class CancelListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            dispose();
+        }
+        
+    }
     public static NewprojectDialog getNewprojectDialog() {
         return newprojectDialog;
     }
-
-
+    //选择项目的位置
     public void chooseWorkingPath() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -120,22 +127,25 @@ public class NewprojectDialog extends JDialog {
             tprojectLocatiuon.setText(path);
         }
     }
+    //新建项目，在项目树中添加节点，在硬盘中新建文件夹
     public void newProject(){
+        //判断项目名称和项目位置不为空
         if (GuiUtil.checkEmpty(tprojectname.getText().toString(), "项目名称")
                 && GuiUtil.checkEmpty(tprojectLocatiuon.getText().toString(), "项目位置")) {
-            ProjectTreeNode ptn = new ProjectTreeNode(tprojectname.getText().toString());
-            String windowspath = tprojectLocatiuon.getText().toString() + "\\"
+            //新建项目文件夹
+            String projectpath = tprojectLocatiuon.getText().toString() + File.separator
                     + tprojectname.getText().toString();
-            String javapath = windowspath.replace("\\", "/");
-            File filedir = new File(javapath);
+            File filedir = new File(projectpath);
             if (!filedir.exists()) {
                 filedir.mkdirs();
             }
-            ptn.setProjectPath(javapath);
-            DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) Constants.projectTree.getModel()
-                    .getRoot();
+            //新建在项目树中的节点
+            ProjectTreeNode ptn = new ProjectTreeNode(tprojectname.getText().toString());
+            //设置其所对应的路径
+            ptn.setProjectPath(projectpath);
+            DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) tree.getModel().getRoot();
             dmt.add(ptn);
-            Constants.projectTree.updateUI();
+            tree.updateUI();
             dispose();
         }
 

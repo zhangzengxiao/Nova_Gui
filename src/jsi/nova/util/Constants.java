@@ -32,7 +32,6 @@ public class Constants {
     //projectTree
     public static DefaultMutableTreeNode projectTreeTop = new DefaultMutableTreeNode("ÏîÄ¿×ÜÀÀ");
     //public static JTree projectTree = new JTree(projectTreeTop);
-    public static JTree projectTree = null;
     //
     public static Map<String,mxGraph> OPENDGRAPH = new HashMap<String,mxGraph>();
     public static String CURRENTWORKINGFILE;
