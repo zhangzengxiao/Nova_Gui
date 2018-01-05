@@ -46,9 +46,9 @@ public class MainFrame extends JFrame{
         this.setSize((int)(screensize.width*0.6),(int)(screensize.getHeight()*0.6));
         this.setVisible(true);
         //分配几个splitPanel的比例
-        MainSplitPanel.getSplitPanel().setDividerLocation(0.11);
-        GraphAndMonitorSplitPanel.getSplitPanel().setDividerLocation(0.8);
-        GraphAndCellsPanel.getPanel().setDividerLocation(0.8);
+//        MainSplitPanel.getSplitPanel().setDividerLocation(0.11);
+//        GraphAndMonitorSplitPanel.getSplitPanel().setDividerLocation(0.8);
+//        GraphAndCellsPanel.getPanel().setDividerLocation(500);
         this.setLocationRelativeTo(null);
     }
 

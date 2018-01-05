@@ -6,10 +6,15 @@ package jsi.nova.gui.panel;
 import java.awt.GridLayout;
 import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import javax.swing.JPanel;
 import javax.swing.JTree;
 
+import jsi.nova.gui.frame.FrameResizeListener;
 import jsi.nova.gui.projecttree.ProjectTreeMouseListener;
 
 /**
@@ -29,13 +34,19 @@ public class ProjectTreePanel extends JPanel{
         this.setLayout(new GridLayout(1, 1));
     }
 
-    public static JTree getProject_tree() {
+    public static JTree getProject_tree(){
         if(project_tree == null){
-            BufferedInputStream inputStream = (BufferedInputStream) ProjectTreePanel.class.getResourceAsStream("/config/ProjectTree.con");
-          XMLDecoder xmlDecoder = new XMLDecoder(inputStream);
-          project_tree = (JTree) xmlDecoder.readObject();
-          project_tree.addMouseListener(new ProjectTreeMouseListener());
-          xmlDecoder.close();           
+        String configpath = System.getProperty("user.dir")+File.separator+"config"+File.separator+"ProjectTree.con";
+        XMLDecoder xmlDecoder;
+        try {
+            xmlDecoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(new File(configpath))));
+            project_tree = (JTree) xmlDecoder.readObject();
+            project_tree.addMouseListener(new ProjectTreeMouseListener());
+            xmlDecoder.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }         
         }
         return project_tree;
     }

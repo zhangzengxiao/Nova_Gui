@@ -10,6 +10,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.net.URISyntaxException;
 
 import javax.swing.JTree;
 
@@ -25,6 +26,10 @@ import jsi.nova.gui.panel.ProjectTreePanel;
  */
 public class FrameWindowListener implements WindowListener {
     private JTree tree = ProjectTreePanel.getProject_tree();
+
+    public FrameWindowListener() {
+        // TODO Auto-generated constructor stub
+    }
     @Override
     public void windowOpened(WindowEvent e) {
         // TODO Auto-generated method stub
@@ -38,7 +43,12 @@ public class FrameWindowListener implements WindowListener {
         // TODO Auto-generated method stub
         //保存项目结构树
         try {
-            saveProjectTree();
+            try {
+                saveProjectTree();
+            } catch (URISyntaxException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         } catch (FileNotFoundException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -74,9 +84,9 @@ public class FrameWindowListener implements WindowListener {
     }
 
     //保存项目树的配置文件
-    public void saveProjectTree() throws FileNotFoundException {
-        File treeconfig = new File(this.getClass().getResource("/config/ProjectTree.con").getFile());
-        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(treeconfig)));
+    public void saveProjectTree() throws URISyntaxException, FileNotFoundException {
+        File configtree = new File(System.getProperty("user.dir")+File.separator+"config"+File.separator+"ProjectTree.con");
+        XMLEncoder xmlEncoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(configtree)));
         tree.removeMouseListener(tree.getMouseListeners()[0]);
         tree.setSelectionPath(null);
         xmlEncoder.writeObject(ProjectTreePanel.getProject_tree());

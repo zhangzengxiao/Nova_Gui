@@ -32,16 +32,58 @@
       </void>
      </object>
     </void>
+    <void method="add">
+     <object class="jsi.nova.gui.projecttree.ProjectTreeNode">
+      <void method="add">
+       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
+      </void>
+      <void property="projectPath">
+       <string>C:\Users\57853\Documents\22232131</string>
+      </void>
+      <void property="userObject">
+       <string>22232131</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="jsi.nova.gui.projecttree.ProjectTreeNode">
+      <void method="add">
+       <object class="javax.swing.tree.DefaultMutableTreeNode"/>
+      </void>
+      <void method="add">
+       <object class="jsi.nova.gui.projecttree.GraphTreeNode">
+        <void property="graphFile">
+         <string>Z:\project1\graph1.jg</string>
+        </void>
+        <void property="userObject">
+         <string>graph1</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="jsi.nova.gui.projecttree.GraphTreeNode">
+        <void property="graphFile">
+         <string>Z:\project1\graph2.jg</string>
+        </void>
+        <void property="userObject">
+         <string>graph2</string>
+        </void>
+       </object>
+      </void>
+      <void property="graphNumber">
+       <int>3</int>
+      </void>
+      <void property="projectPath">
+       <string>Z:\\project1</string>
+      </void>
+      <void property="userObject">
+       <string>project1</string>
+      </void>
+     </object>
+    </void>
    </object>
   </object>
   <void id="DefaultTreeCellRenderer0" property="cellRenderer">
-   <void property="foreground">
-    <object class="javax.swing.plaf.ColorUIResource">
-     <int>3</int>
-     <int>3</int>
-     <int>3</int>
-    </object>
-   </void>
    <void property="location">
     <object class="java.awt.Point" id="Point0">
      <void class="java.awt.Point" method="getField">
@@ -60,12 +102,12 @@
      </void>
     </object>
    </void>
-   <void id="ImageIcon0" property="icon"/>
+   <void id="ImageIcon0" property="closedIcon"/>
    <void property="leafIcon">
     <object idref="ImageIcon0"/>
    </void>
    <void property="text">
-    <string>graph1</string>
+    <string>graph2</string>
    </void>
   </void>
   <void id="DefaultTreeSelectionModel0" property="selectionModel">
