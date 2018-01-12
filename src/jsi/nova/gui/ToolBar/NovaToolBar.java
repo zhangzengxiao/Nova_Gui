@@ -6,6 +6,7 @@ package jsi.nova.gui.ToolBar;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+import jsi.nova.gui.listener.SaveGraphListener;
 import jsi.nova.util.GuiUtil;
 
 /**
@@ -29,16 +30,16 @@ public class NovaToolBar extends JToolBar {
 
     public NovaToolBar() {
         // TODO Auto-generated constructor stub
-        runWorkflow = new JButton();
-        GuiUtil.setImageIcon(runWorkflow, "video_play_64.png", "运行工作流");
+//        runWorkflow = new JButton();
+//        GuiUtil.setImageIcon(runWorkflow, "video_play_64.png", "运行工作流");
         saveGraph = new JButton();
         GuiUtil.setImageIcon(saveGraph, "save.gif", "保存当前工作流");
-        openGraph = new JButton();
-        GuiUtil.setImageIcon(openGraph, "outbox_64.png", "打开图片");
-        addNode = new JButton();
-        GuiUtil.setImageIcon(addNode, "frame_64.png", "添加节点");
-        addEdge = new JButton();
-        GuiUtil.setImageIcon(addEdge, "arrow_64.png", "添加连线");
+//        openGraph = new JButton();
+//        GuiUtil.setImageIcon(openGraph, "outbox_64.png", "打开图片");
+//        addNode = new JButton();
+//        GuiUtil.setImageIcon(addNode, "frame_64.png", "添加节点");
+//        addEdge = new JButton();
+//        GuiUtil.setImageIcon(addEdge, "arrow_64.png", "添加连线");
         zoomin = new JButton();
         GuiUtil.setImageIcon(zoomin, "zoomin.gif", "放大");
         zoomout = new JButton();
@@ -48,7 +49,7 @@ public class NovaToolBar extends JToolBar {
         //
         //runWorkflow.addActionListener(new RunWorkFlowListener());
 //        addNode.addActionListener(new AddNodeListener());
-        //saveGraph.addActionListener(new SaveGraphListener());
+        saveGraph.addActionListener(new SaveGraphListener());
 //        openGraph.addActionListener(new OpenGraphListener());
         zoomin.addActionListener(new ZoomInListener());
         zoomout.addActionListener(new ZoomOutListener());

@@ -20,22 +20,19 @@ import jsi.nova.util.Constants;
 public class MonitorPanel extends JPanel{
     
     private static MonitorPanel panel = new MonitorPanel();
-    private JTextArea monitor_area;
+    private static JTextArea monitor_area;
     
     private  MonitorPanel() {
         // TODO Auto-generated constructor stub
-        Constants.MONITORAREA = new JTextArea();
-        Constants.MONITORAREA.setEditable(false);
+        monitor_area = new JTextArea();
+        monitor_area.setEditable(false);
         this.setLayout(new GridLayout(1, 1));
-        this.add(Constants.MONITORAREA);
+        this.add(monitor_area);
     }
     public static MonitorPanel getPanel() {
         return panel;
     }
-    public JTextArea getMonitor_area() {
+    public static JTextArea getMonitor_area() {
         return monitor_area;
-    }
-    public void setMonitor_area(JTextArea monitor_area) {
-        this.monitor_area = monitor_area;
     }
 }

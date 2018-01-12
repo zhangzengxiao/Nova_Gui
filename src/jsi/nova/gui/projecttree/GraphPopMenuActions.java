@@ -19,12 +19,14 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.python.modules.thread.thread;
 import org.w3c.dom.Document;
 
 import com.mxgraph.io.mxCodec;
 import com.mxgraph.util.mxUtils;
 import com.mxgraph.view.mxGraph;
 
+import jsi.nova.gui.monitor.MonitorThread;
 import jsi.nova.jgraphx.FinalGraphComponent;
 import jsi.nova.util.Constants;
 
@@ -103,7 +105,8 @@ public class GraphPopMenuActions {
                 e1.printStackTrace();
             }
             RunWorkFlow.run(node);
-            editMonitorArea();
+            //启动监控线程
+            new Thread(new MonitorThread()).start();;
         }
 
     }
@@ -115,6 +118,7 @@ public class GraphPopMenuActions {
         mxCodec codec = new mxCodec();
         Document doc = mxUtils.loadDocument(FinalGraphComponent.class.getResource("/resources/default-style.xml").toString());
         codec.decode(doc.getDocumentElement(), graph.getStylesheet());
+        
         File graphFile = new File(node.getGraphFile());
         //ConstantsRepository.OPENDGRAPH.put(graphFile.getAbsolutePath(), graph);
         //设置当前的文件和显示的图
@@ -129,12 +133,7 @@ public class GraphPopMenuActions {
         }
         xmlDecoder.close();
         //设置graphcomponent
-        //        Constants.graphComponent.setVisible(true);
-        //        Constants.graphComponent.setGridVisible(true);
-        //        Constants.graphComponent.setGraph(graph);
-        //        Constants.graphComponent.updateUI();
         FinalGraphComponent.getGraphComponent().setVisible(true);
-        FinalGraphComponent.getGraphComponent().setGridVisible(true);
         FinalGraphComponent.getGraphComponent().setGraph(graph);
         FinalGraphComponent.getGraphComponent().updateUI();
     }
@@ -204,11 +203,5 @@ public class GraphPopMenuActions {
             }
         }
         return true;
-    }
-
-    //给监控面板添加信息
-    public static void editMonitorArea() {
-        Constants.MONITORAREA.setText(" workflow is runing.");
-        Constants.MONITORAREA.setText(" workflow is runing....");
     }
 }

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import com.mxgraph.swing.mxGraphComponent;
+import com.mxgraph.view.mxGraph;
 
 import jsi.nova.jgraphx.FinalGraphComponent;
 import jsi.nova.jgraphx.LeftMouseButtonListener;
@@ -36,11 +37,8 @@ public class GraphPanel extends JPanel{
         this.setLayout(new GridLayout(1, 1));
         icon=new ImageIcon(GraphPanel.class.getResource("/img/background.png"));  
         img=icon.getImage();
-        
-//        mxGraphComponent.getGraphControl().addMouseListener(new LeftMouseButtonListener());
-//        mxGraphComponent.setVisible(false);
-        //this.add(mxGraphComponent);
         this.add(FinalGraphComponent.getGraphComponent());
+//        this.add(new mxGraphComponent(new mxGraph()));
     }
     public void paintComponent(Graphics g) {  
         super.paintComponent(g);  

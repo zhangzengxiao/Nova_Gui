@@ -29,7 +29,7 @@ import jsi.nova.jgraphx.CommandsCell;
  * @Date           2017年12月7日 下午3:34:24 
  * @Place          北京航空航天大学中德软件联合研究所
  */
-public class RunWorkFlow{
+public class RunWorkFlow {
 
     private static FileWriter fileWriter = null; //生成的xml文件
     private static Map<String, ArrayList<String>> edge = null;
@@ -59,7 +59,7 @@ public class RunWorkFlow{
         try {
             //fileWriter = new FileWriter("C:/Users/Shaohan/Desktop/phase_test/workflow.xml");
             fileWriter = new FileWriter(
-                    current_working_path + File.separatorChar + node.getUserObject().toString()+"workflow.xml");
+                    current_working_path + File.separatorChar + node.getUserObject().toString() + "workflow.xml");
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -112,7 +112,9 @@ public class RunWorkFlow{
                     FileWriter bat_file = new FileWriter(
                             current_working_path + File.separatorChar + c.getValue().toString() + ".bat");
                     BufferedWriter bat_Writer = new BufferedWriter(bat_file);
-                    bat_Writer.write(commands);
+                    if (commands != null) {
+                        bat_Writer.write(commands);
+                    }
                     bat_Writer.flush();
                     bat_Writer.close();
                     bat_file.close();

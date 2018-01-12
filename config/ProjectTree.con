@@ -70,8 +70,18 @@
         </void>
        </object>
       </void>
+      <void method="add">
+       <object class="jsi.nova.gui.projecttree.GraphTreeNode">
+        <void property="graphFile">
+         <string>Z:\project1\graph3.jg</string>
+        </void>
+        <void property="userObject">
+         <string>graph3</string>
+        </void>
+       </object>
+      </void>
       <void property="graphNumber">
-       <int>3</int>
+       <int>4</int>
       </void>
       <void property="projectPath">
        <string>Z:\\project1</string>
@@ -84,6 +94,13 @@
    </object>
   </object>
   <void id="DefaultTreeCellRenderer0" property="cellRenderer">
+   <void property="foreground">
+    <object class="javax.swing.plaf.ColorUIResource">
+     <int>3</int>
+     <int>3</int>
+     <int>3</int>
+    </object>
+   </void>
    <void property="location">
     <object class="java.awt.Point" id="Point0">
      <void class="java.awt.Point" method="getField">

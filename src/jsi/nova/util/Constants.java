@@ -3,8 +3,6 @@
  */
 package jsi.nova.util;
 
-import javax.swing.JTextArea;
-
 import com.mxgraph.view.mxGraph;
 
 /**
@@ -16,9 +14,6 @@ import com.mxgraph.view.mxGraph;
  * @Place          北京航空航天大学中德软件联合研究所
  */
 public class Constants {
-    
-    //Global Component
-    public static JTextArea MONITORAREA;
     //
     public static String CURRENTWORKINGFILE;
     public static mxGraph CURRENTWORKINGGRAPH;

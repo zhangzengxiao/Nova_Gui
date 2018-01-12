@@ -63,8 +63,18 @@ public class CellsPanel extends JPanel {
         scrollPane = new JScrollPane(innerPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        this.addCommandsCell("Commands", new ImageIcon(CellsPanel.class.getResource("/img/rounded.png")), "image;image=/img/rounded.png", 80, 50, "");
-        this.addInnerGraphCell("InnerGraph", new ImageIcon(CellsPanel.class.getResource("/img/triangle.png")), "image;image=/img/server.png", 80, 50, "");
+        this.addCommandsCell("Commands", new ImageIcon(CellsPanel.class.getResource("/img/rounded.png")), "rounded=1", 40, 30, "");
+        this.addInnerGraphCell("InnerGraph", new ImageIcon(CellsPanel.class.getResource("/img/triangle.png")), "triangle", 40, 30, "");
+        this.addTemplate("Rectangle",new ImageIcon(CellsPanel.class.getResource("/img/rectangle.png")),null, 40, 30, "");
+        this.addTemplate("Double Rectangle",new ImageIcon(CellsPanel.class.getResource("/img/doublerectangle.png")),"rectangle;shape=doubleRectangle", 40, 30, "");
+        this.addTemplate("Ellipse",new ImageIcon(CellsPanel.class.getResource("/img/ellipse.png")),"ellipse", 40, 40, "");
+        this.addTemplate("Double Ellipse",new ImageIcon(CellsPanel.class.getResource("/img/doubleellipse.png")),"ellipse;shape=doubleEllipse", 40, 40, "");
+        this.addTemplate("Rhombus",new ImageIcon(CellsPanel.class.getResource("/img/rhombus.png")),"rhombus", 40, 40, "");
+        this.addTemplate("Hexagon",new ImageIcon(CellsPanel.class.getResource("/img/hexagon.png")),"shape=hexagon", 40, 30, "");
+        this.addTemplate("Cylinder",new ImageIcon(CellsPanel.class.getResource("/img/cylinder.png")),"shape=cylinder", 30, 40, "");
+        this.addTemplate("Actor",new ImageIcon(CellsPanel.class.getResource("/img/actor.png")),"shape=actor", 30, 40, "");
+        this.addTemplate("Cloud",new ImageIcon(CellsPanel.class.getResource("/img/cloud.png")),"ellipse;shape=cloud", 40, 30, "");
+        
         this.add(scrollPane);
         this.addComponentListener(new ComponentAdapter()
         {
@@ -119,12 +129,12 @@ public class CellsPanel extends JPanel {
         });
     }
 
-//    public void addTemplate(final String name, ImageIcon icon, String style, int width, int height, Object value) {
-//        mxCell cell = new mxCell(value, new mxGeometry(0, 0, width, height), style);
-//        cell.setVertex(true);
-//
-//        addTemplate(name, icon, cell);
-//    }
+    public void addTemplate(final String name, ImageIcon icon, String style, int width, int height, Object value) {
+        mxCell cell = new mxCell(value, new mxGeometry(0, 0, width, height), style);
+        cell.setVertex(true);
+
+        addTemplate(name, icon, cell);
+    }
     public void addCommandsCell(final String name, ImageIcon icon, String style, int width, int height, Object value) {
         CommandsCell cell = new CommandsCell(value, new mxGeometry(0, 0, width, height), style);
         cell.setVertex(true);
