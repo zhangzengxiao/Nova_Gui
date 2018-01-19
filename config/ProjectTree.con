@@ -124,7 +124,7 @@
     <object idref="ImageIcon0"/>
    </void>
    <void property="text">
-    <string>graph2</string>
+    <string>graph3</string>
    </void>
   </void>
   <void id="DefaultTreeSelectionModel0" property="selectionModel">
